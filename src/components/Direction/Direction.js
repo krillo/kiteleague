@@ -6,9 +6,6 @@ import './Direction.scss';
 class Direction extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            style: { transform: 'rotate(80deg)'}
-        }
     }
 
     render() {
