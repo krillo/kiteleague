@@ -20,7 +20,6 @@ div {
 }
 #root {
     text-align: center;
-    margin: 10px;
     display: flex;
     justify-content: center;
 }

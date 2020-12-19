@@ -1,7 +1,8 @@
 @import "./design-tokens/scss-variables.scss";
 
 .container {
-  min-width:375px;
+  width:100%;
+  max-width:428px;
   display: flex;
   flex-direction: column;
 }

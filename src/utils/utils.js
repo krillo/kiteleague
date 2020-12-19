@@ -6,3 +6,25 @@
 export const roundW = (wind) => {
     return wind.toFixed(0);
 };
+
+
+export const getDate = (jsondate, type) => {
+    let date = new Date(jsondate);
+    let months = ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+    let monthName = months[date.getMonth()];
+    let day = date.getDate();
+    let niceDate = day + ' ' + monthName;
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let time = hour + ':' + minutes;
+    switch (type) {
+        case 'date':
+            return niceDate;
+            break;
+        case 'time':
+            return time;
+            break;
+        default:
+            return niceDate;
+    }
+};

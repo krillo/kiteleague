@@ -8,9 +8,9 @@
     flex-direction: row;
     justify-content: space-between;
     height: 50px;
-    background-color: $bg-color;
-    border-top: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
+    background-color: $gray2;
+    border-top: 2px solid $gray4;
+    border-bottom: 1px solid $gray3;
     @include side-padding;
     .left {
       display: flex;
@@ -42,8 +42,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
-    height:100px;
+    height:75px;
     @include side-padding;
     @include top-bottom-padding;
     .wind-area {
@@ -55,10 +56,13 @@
         width:60px;
       }
       .gust{
-        color: $border-color;
+        color: $gray4;
         @include font-big;
         width:80px;
       }
+    }
+    .icon {
+      width:40px;
     }
     .temp {
       @include font-medium;

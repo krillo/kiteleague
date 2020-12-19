@@ -1,4 +1,15 @@
-$wind0: #fff;
+$gray1: #f9f9f9;
+$gray2: #e5e5e5;
+$gray3: #ccc;
+$gray4: #b2b2b2;
+$gray5: #999;
+$gray6: #7f7f7f;
+$gray7: #666;
+$gray8: #4c4c4c;
+$gray9: #333;
+$gray10: #191919;
+
+$wind0: #A8CAE3;
 $wind1: #A8CAE3;
 $wind2: #A8CAE3;
 $wind3: #4A84BA;
@@ -24,15 +35,14 @@ $wind29: #e5e5e6;
 
 $menu-color: #d2ecce;
 
-$bg-color: #E5E5E6;
-$border-color: #A9A9A9;
+
 @mixin side-padding {
   padding-left: 15px;
   padding-right: 15px;
 }
 @mixin top-bottom-padding {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 @mixin pop-shadow {
@@ -45,7 +55,7 @@ $border-color: #A9A9A9;
           0 100px 80px rgba(0, 0, 0, 0.12);
 }
 @mixin font-big {
-  font-size:45px;
+  font-size:35px;
   line-height: 1;
   letter-spacing: -2px;
 }
