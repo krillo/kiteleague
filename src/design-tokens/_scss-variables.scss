@@ -1,0 +1,55 @@
+$wind0: #fff;
+$wind1: #A8CAE3;
+$wind2: #A8CAE3;
+$wind3: #4A84BA;
+$wind4: #4A84BA;
+$wind5: #4A84BA;
+$wind6: #4A84BA;
+$wind7: #57A35C;
+$wind8: #57A35C;
+$wind9: #57A35C;
+$wind10: #57A35C;
+$wind11: #FCF26B;
+$wind12: #FCF26B;
+$wind13: #FCF26B;
+$wind14: #F3B660;
+$wind15: #F3B660;
+$wind16: #F3B660;
+$wind17: #D3352A;
+$wind18: #D3352A;
+$wind19: #D3352A;
+$wind20: #D3352A;
+$wind21: #A42C6A;
+$wind29: #e5e5e6;
+
+$menu-color: #d2ecce;
+
+$bg-color: #E5E5E6;
+$border-color: #A9A9A9;
+@mixin side-padding {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@mixin top-bottom-padding {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@mixin pop-shadow {
+  box-shadow:
+          0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+          0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+          0 100px 80px rgba(0, 0, 0, 0.12);
+}
+@mixin font-big {
+  font-size:45px;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+@mixin font-medium {
+  font-size:30px;
+  line-height: 1;
+}

@@ -1,0 +1,24 @@
+@import "./design-tokens/scss-variables.scss";
+
+.container {
+  min-width:375px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  display: inline-block;
+  flex-direction: row;
+  background-color: $menu-color;
+  li {
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: inline-block;
+    padding: 10px 30px;
+    border: 1px solid gray;
+    margin-right: 5px;
+  }
+}
+.main {
+
+}

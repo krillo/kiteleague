@@ -1,0 +1,68 @@
+@import "./../../design-tokens/scss-variables.scss";
+
+.spot {
+  display: flex;
+  flex-direction: column;
+  .spot-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    background-color: $bg-color;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    @include side-padding;
+    .left {
+      display: flex;
+      flex-direction: row;
+      align-items:center;
+      .symbol {
+        background-color: $wind9;
+        color:white;
+        font-size: 1.4em;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include pop-shadow;
+      }
+      .name {
+        font-size: 3.2em;
+        font-weight: 400;
+      }
+    }
+    .right {
+      font-size: 2em;
+    }
+  }
+  .spot-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    height:100px;
+    @include side-padding;
+    @include top-bottom-padding;
+    .wind-area {
+      display: flex;
+      width: 135px;
+      justify-content: flex-start;
+      .wind{
+        @include font-big;
+        width:60px;
+      }
+      .gust{
+        color: $border-color;
+        @include font-big;
+        width:80px;
+      }
+    }
+    .temp {
+      @include font-medium;
+    }
+
+  }
+}

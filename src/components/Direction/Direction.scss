@@ -1,0 +1,33 @@
+@import "./../../design-tokens/scss-variables.scss";
+
+svg {
+  width:40px;
+  height:40px;
+  fill:red;
+}
+
+.direction {
+  //transform: rotate(80deg);
+  &.w0 svg{fill:$wind0;}
+  &.w1 svg{fill:$wind1;}
+  &.w2 svg{fill:$wind1;}
+  &.w3 svg{fill:$wind3;}
+  &.w4 svg{fill:$wind4;}
+  &.w5 svg{fill:$wind5;}
+  &.w6 svg{fill:$wind6;}
+  &.w7 svg{fill:$wind7;}
+  &.w8 svg{fill:$wind8;}
+  &.w9 svg{fill:$wind9;}
+  &.w10 svg{fill:$wind10;}
+  &.w11 svg{fill:$wind11;}
+  &.w12 svg{fill:$wind12;}
+  &.w13 svg{fill:$wind13;}
+  &.w14 svg{fill:$wind14;}
+  &.w15 svg{fill:$wind15;}
+  &.w16 svg{fill:$wind16;}
+  &.w17 svg{fill:$wind17;}
+  &.w18 svg{fill:$wind18;}
+  &.w19 svg{fill:$wind19;}
+  &.w20 svg{fill:$wind20;}
+}
+
