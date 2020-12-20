@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { getDate } from './../../utils/utils.js';
+import { getDate, getWeatherIconByKey} from './../../utils/utils.js';
 import Direction from '../Direction/Direction';
 import './Spot.scss';
 
@@ -9,12 +9,9 @@ class Spot extends React.Component {
         super(props);
     }
 
-    getImage(imgKey) {
-        let src = '/img/weathericon/svg/' + imgKey + '.svg';
-        return <img className='icon' src={src}/>;
-    }
-
     render() {
+        let weatherIcon = getWeatherIconByKey(this.props.icon);
+
         return (
             <Link to="/beep" id={this.props.id} props={this.props}>
                 <div className='spot' >
@@ -35,7 +32,7 @@ class Spot extends React.Component {
                             <div className="wind">{this.props.wind}</div>
                             <div className="gust">({this.props.gust})</div>
                         </div>
-                        {this.getImage(this.props.icon)}
+                        {weatherIcon}
                         <div className="temp">{this.props.temp}°</div>
                     </div>
                 </div>

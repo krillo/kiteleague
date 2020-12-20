@@ -4,6 +4,13 @@ html {
 }
 body {
     background-color: ivory;
+    width:100%;
+    max-width:428px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+    margin:0;
 }
 div {
     box-sizing: border-box;
@@ -14,9 +21,12 @@ div {
     background-color: ivory;
     border-top: #bbb solid 2px;
     margin-top: 100px;
+
 }
 .facit img {
     margin-right:20px;
+    width:345px;
+    overflow: hidden;
 }
 #root {
     text-align: center;
