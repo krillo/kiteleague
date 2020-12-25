@@ -11,9 +11,14 @@ class Spot extends React.Component {
 
     render() {
         let weatherIcon = getWeatherIconByKey(this.props.icon);
+        let spotid = "?spotid=" + this.props.spotId;
 
         return (
-            <Link to="/beep" id={this.props.id} props={this.props}>
+            <Link to={{
+                      pathname: "/detail",
+                      search: spotid,
+                  }}
+                  props={this.props}>
                 <div className='spot' >
                     <div className="spot-head">
                         <div className="left">

@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import Spot from './components/Spot/Spot';
 import Beep from './components/Beep/Beep';
+import Detail from './components/Detail/Detail';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
+import {getWindData} from "./utils/utils";
+
 
     // <li>Råå</li>
     // <li>lat 56.001628</li>
@@ -16,8 +19,8 @@ import {
     // <li>curl -s 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=55.9&lon=12.7'|json_pp</li>
 
 
-let spots = [
-    {id: "1", name: 'Råå', wind: 12, gust: 18, dir: 90, temp: 14, icon: 'partlycloudy_night', time:'2020-12-16T21:00:00Z'},
+let spotsSummary = [
+    {id: "1", name: 'Råå', wind: 6, gust: 8, dir: 90, temp: 14, icon: 'partlycloudy_night', time:'2020-12-16T21:00:00Z'},
     {id: "2", name: 'Fortuna', wind: 7.9, gust: 9, dir: 180, temp: 13, icon: 'cloudy', time:'2020-12-16T21:00:00Z'},
     {id: "3", name: 'LA', wind: 19, gust: 10, dir: 270, temp: 12, icon: 'fair_day', time:'2020-12-16T21:00:00Z'},
     {id: "4", name: 'JP', wind: 11, gust: 12, dir: 90, temp: 12, icon: 'clearsky_day', time:'2020-12-16T21:00:00Z'},
@@ -28,13 +31,26 @@ let spots = [
     {id: "9", name: 'BBC', wind: 11, gust: 11, dir: 0, temp: 13, icon: 'lightrain', time:'2020-12-16T21:00:00Z'},
     {id: "10", name: 'BBC', wind: 11, gust: 11, dir: 0, temp: 13, icon: 'lightrain', time:'2020-12-16T21:00:00Z'},
 ];
-const spotItems = spots.map((spot) =>
+const spotItems = spotsSummary.map((spot) =>
     <Spot
-        key={spot.id} id={spot.id} name={spot.name} wind={spot.wind}
+        key={`head${spot.id}`} spotId={spot.id} name={spot.name} wind={spot.wind}
         gust={spot.gust} dir={spot.dir} temp={spot.temp} icon={spot.icon}
         time={spot.time}
     />
 );
+
+//<div className="spot-summary">
+
+
+
+
+const windData = () => {
+    const windData = getWindData(1);
+    console.log(windData);
+    return '';
+}
+
+
 
 ReactDOM.render(
     <React.StrictMode>
@@ -46,19 +62,23 @@ ReactDOM.render(
                             <Link to="/">Spots</Link>
                         </li>
                         <li>
+                            <Link to="/detail">Detail</Link>
+                        </li>
+                        <li>
                             <Link to="/beep">Beep</Link>
                         </li>
                     </ul>
                 </div>
                 <div className={'main'}>
                     <Switch>
-                        <Route path="/">
-                            <div className="spot-summary">
+                        <Route exact path="/">
                                 {spotItems}
-                            </div>
+                        </Route>
+                        <Route path="/detail">
+                            <Detail spotId={"1"} />
                         </Route>
                         <Route path="/beep">
-                            <Beep />
+                            <Beep  />
                         </Route>
                     </Switch>
                 </div>
