@@ -1,0 +1,55 @@
+@import "./../../design-tokens/scss-variables.scss";
+
+.day {
+ background-color: $gray5;
+  border-top: $gray3;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  @include font-small;
+  height: 30px;
+  align-items: center;
+  padding-left: 10px;
+  .weekday {
+    margin-right:10px
+  }
+}
+.hourly{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  border-top: 1px solid $gray3;
+  @include font-small;
+  .hour {
+    margin-left: 10px;
+  }
+  .dir svg{
+    width:17px;
+  }
+  .wind-area {
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+    .wind{
+      @include font-small;
+      width:65px;
+      span {
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+    .gust{
+      color: $gray5;
+      @include font-small;
+      width: 50px;
+    }
+  }
+  .icon {
+    width:30px;
+  }
+  .temp {
+    margin-right: 15px;
+  }
+
+}

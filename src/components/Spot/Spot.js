@@ -12,6 +12,7 @@ class Spot extends React.Component {
     render() {
         let weatherIcon = getWeatherIconByKey(this.props.icon);
         let spotid = "?spotid=" + this.props.spotId;
+        let windRound = this.props.wind.toFixed(0);
 
         return (
             <Link to={{
@@ -22,14 +23,17 @@ class Spot extends React.Component {
                 <div className='spot' >
                     <div className="spot-head">
                         <div className="left">
-                            <div className="symbol">
-                                {this.props.wind.toFixed(0)}
+                            <div className={`symbol w${windRound}`} >
+                                {windRound}
                             </div>
                             <div className={'name'}>
                                 {this.props.name}
                             </div>
                         </div>
-                        <div className="right">{getDate(this.props.time, 'date')}</div>
+                        <div className="right">
+                            <div className={'weekday'}>{getDate(this.props.time, 'weekday')}</div>
+                            <div className={'nice-date'}>{getDate(this.props.time, 'date')}</div>
+                        </div>
                     </div>
                     <div className="spot-data">
                         <div className="dir"> <Direction dir={this.props.dir} wind={this.props.wind} gust={this.props.gust} /></div>

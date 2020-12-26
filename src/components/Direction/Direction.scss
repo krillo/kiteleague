@@ -7,7 +7,6 @@ svg {
 }
 
 .direction {
-  //transform: rotate(80deg);
   &.w0 svg{fill:$wind0;}
   &.w1 svg{fill:$wind1;}
   &.w2 svg{fill:$wind1;}

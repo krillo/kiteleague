@@ -55,11 +55,64 @@ $menu-color: #d2ecce;
           0 100px 80px rgba(0, 0, 0, 0.12);
 }
 @mixin font-big {
-  font-size:35px;
+  font-size:32px;
   line-height: 1;
   letter-spacing: -2px;
 }
 @mixin font-medium {
-  font-size:30px;
+  font-size:29px;
   line-height: 1;
 }
+@mixin font-small {
+  font-size:16px;
+  line-height: 1;
+  font-weight: bold;
+}
+@mixin flex-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin wind-colors {
+  &.w0 {background-color:$wind0;}
+  &.w1 {background-color:$wind1;}
+  &.w2 {background-color:$wind1;}
+  &.w3 {background-color:$wind3;}
+  &.w4 {background-color:$wind4;}
+  &.w5 {background-color:$wind5;}
+  &.w6 {background-color:$wind6;}
+  &.w7 {background-color:$wind7;}
+  &.w8 {background-color:$wind8;}
+  &.w9 {background-color:$wind9;}
+  &.w10 {background-color:$wind10;}
+  &.w11 {background-color:$wind11;}
+  &.w12 {background-color:$wind12;}
+  &.w13 {background-color:$wind13;}
+  &.w14 {background-color:$wind14;}
+  &.w15 {background-color:$wind15;}
+  &.w16 {background-color:$wind16;}
+  &.w17 {background-color:$wind17;}
+  &.w18 {background-color:$wind18;}
+  &.w19 {background-color:$wind19;}
+  &.w20 {background-color:$wind20;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
