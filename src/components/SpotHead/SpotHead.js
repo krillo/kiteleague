@@ -2,16 +2,19 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { getDate, getWeatherIconByKey} from './../../utils/utils.js';
 import Direction from '../Direction/Direction';
-import './Spot.scss';
+import './SpotHead.scss';
 
-class Spot extends React.Component {
+class SpotHead extends React.Component {
     constructor(props) {
         super(props);
+        console.log('Spot1');
+        console.log(props);
+        console.log('Spot2');
     }
 
     render() {
         let weatherIcon = getWeatherIconByKey(this.props.icon);
-        let spotid = "?spotid=" + this.props.spotId;
+        let spotid = "?spotid=" + this.props.id;
         let windRound = this.props.wind.toFixed(0);
 
         return (
@@ -31,8 +34,9 @@ class Spot extends React.Component {
                             </div>
                         </div>
                         <div className="right">
-                            <div className={'weekday'}>{getDate(this.props.time, 'weekday')}</div>
-                            <div className={'nice-date'}>{getDate(this.props.time, 'date')}</div>
+                            <div className={'weekday'}>{getDate(this.props.timestamp, 'weekday')}</div>
+                            <div className={'nice-date'}>{getDate(this.props.timestamp, 'date')}</div>
+                            <div className={'nice-date'}>{getDate(this.props.timestamp, 'time')}</div>
                         </div>
                     </div>
                     <div className="spot-data">
@@ -49,4 +53,4 @@ class Spot extends React.Component {
         );
     }
 }
-export default Spot;
+export default SpotHead;
