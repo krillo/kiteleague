@@ -63,7 +63,6 @@ class Summary extends Component {
     render() {
         return (
             <div className={"summary-page"}>
-                Summary page
                 { this.spotsSummary() }
             </div>
         )

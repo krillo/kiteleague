@@ -1,0 +1,23 @@
+@import "./../../design-tokens/scss-variables.scss";
+
+.nav-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height:$nav-height;
+  z-index:10;
+  background-color: $nav-footer;
+  border-top: 1px solid $gray6;
+  @include flex-row;
+  align-content: space-between;
+  @include app-padding;
+  a {
+    display: block;
+    width:33%;
+    flex-grow:1;
+  }
+  svg {
+    fill: $gray9;
+    width:30px;
+  }
+}

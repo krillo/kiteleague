@@ -99,7 +99,13 @@ export const getCurrentTimestamp = () => {
  * @returns {JSX.Element}
  */
 export const getWeatherIconByKey = (imgKey, cssClasses = '') => {
-    let src = '/img/weathericon/svg/' + imgKey + '.svg';
+    const src = '/img/weathericon/svg/' + imgKey + '.svg';
+    return <img className='icon' src={src}/>;
+};
+
+
+export const getIcon = (imgKey, cssClasses = '') => {
+    const src = '/img/icon/' + imgKey + '.svg';
     return <img className='icon' src={src}/>;
 };
 
