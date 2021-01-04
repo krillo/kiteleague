@@ -10,7 +10,7 @@ class Nav extends Component {
     }
 
     openNav = () => {
-        document.getElementById("mySidenav").style.width = '250px';
+        document.getElementById("mySidenav").style.width = '100%';
     }
     closeNav = () => {
         document.getElementById("mySidenav").style.width = '0';
@@ -19,15 +19,13 @@ class Nav extends Component {
     render() {
         return (
             <div className="sidenav-container">
-                <div className={'hamburger'}   onClick={() => this.openNav() }  >&#9776; open</div>
+                <div className={'hamburger'} onClick={this.openNav } >&#9776;</div>
                 <div id="mySidenav" className="sidenav">
-                    <a href="javascript:void(0)" className="closebtn" onClick={() => this.closeNav() } >&times;</a>
-
-                    <Link to="/" onClick={() => this.closeNav() } >Spots</Link>
+                    <div className="close-button" onClick={() => this.closeNav() } >&times;</div>
+                    <Link to="/" onClick={() => this.closeNav() } >Home</Link>
                     <Link to={{pathname: "/detail", search: "spotid=1"}} onClick={() => this.closeNav() }>Detail</Link>
                     <Link to="/summary" onClick={() => this.closeNav() }>Summary</Link>
-                    <Link to="/beep" onClick={() => this.closeNav() }>Beep</Link>
-                    <Link to="/RestAxios" onClick={() => this.closeNav() }>RestAxios</Link>
+                    <Link to="/settings" onClick={() => this.closeNav() }>Settings</Link>
                 </div>
             </div>
         )
