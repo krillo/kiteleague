@@ -1,8 +1,15 @@
 @import "./../../design-tokens/scss-variables.scss";
-.hamburger {
-  font-size:30px;
-  cursor:pointer
+
+.sidenav-container{
+  @include flex-row;
+  @include app-padding;
+  .hamburger {
+    font-size:30px;
+    cursor:pointer;
+    margin-bottom:15px;
+  }
 }
+
 
 .sidenav {
   height: 100%;

@@ -1,1 +1,10 @@
 @import "./../../design-tokens/scss-variables.scss";
+
+.settings {
+  @include app-padding;
+  @include flex-column;
+  width:100%;
+  ul {
+    width:100%;
+  }
+}

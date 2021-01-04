@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './iOSSwitch.scss';
+import './IOSSwitch.scss';
 
 class IOSSwitch extends Component {
     constructor(props) {
@@ -12,7 +12,11 @@ class IOSSwitch extends Component {
     render() {
         return (
             <div className="ios-switch">
-                iOSSwitch
+                <div className={'text'}>{ this.props.text }</div>
+                <label className="form-switch">
+                    <input type="checkbox"/>
+                        <i></i>
+                </label>
             </div>
         )
     }

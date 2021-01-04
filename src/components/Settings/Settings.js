@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Settings.scss';
-import { Link } from "react-router-dom";
+import IOSSwitch from '../IOSSwitch/IOSSwitch';
 
 class Settings extends Component {
     constructor(props) {
@@ -13,7 +13,13 @@ class Settings extends Component {
     render() {
         return (
             <div className="settings">
-                Settings
+                <h1>Settings</h1>
+                <ul>
+                    <li className={'setting'}>
+                        <div><IOSSwitch text={'Show only daylight hours'}/></div>
+                    </li>
+                </ul>
+
             </div>
         )
     }

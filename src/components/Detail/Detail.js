@@ -43,13 +43,14 @@ export class Detail extends Component {
     }
 
     getHourly = (current) => {
-        let elementKey, newDay, hour;
+        let elementKey, newDay,visibleHour, hour;
+        let daylightClass = '';
         let x = [];
             Object.keys(current.hourly).forEach( key => {
             hour = current.hourly[key];
             elementKey = getDate(hour.timestamp, 'key')+ '-' +current.id;
             newDay = '';
-
+            daylightClass = (hour.isDaylight === true) ? 'daylight' : '';
             if(hour.hour === '00') {
                 newDay = (
                     <div className={'day'}>
@@ -60,7 +61,7 @@ export class Detail extends Component {
             x.push (
                 <div key={elementKey} className={elementKey}>
                     {newDay}
-                    <div className={`hourly ${elementKey}`}>
+                    <div className={`hourly ${elementKey} ${daylightClass}`}>
                         <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
                         <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} /></div>
                         <div className='wind-area'>
@@ -86,9 +87,7 @@ export class Detail extends Component {
             current = this.state.current;
             spotHead = this.getSpotHead(current);
             hourly = this.getHourly(current);
-
         }
-
 
         return (
             <div className={"detail-page"}>
@@ -104,75 +103,6 @@ export class Detail extends Component {
                 )}
             </div>
         )}
-
-
-// <Spot
-// key={`detail-head-${this.state.spotId}`}
-// spotId={this.state.spotId}
-// name={this.state.current.name} wind={this.state.current.hourly[0].wind}
-// gust={this.state.current.hourly[0].gust} dir={this.state.current.hourly[0].dir}
-// temp={this.state.current.hourly[0].temp} icon={this.state.current.hourly[0].icon}
-// time={this.state.current.hourly[0].time}
-// />
-
-
-
-//
-// {this.state.windData.length === 0 ? (
-// <div>Loading...</div>
-// ) : (
-// <div>kalle anka</div>
-// { this.getSpotHead(current) }
-// )}
-
-
-    // render() {
-    //     console.log(this.state.windData);
-    //     let current = this.state.windData;
-    //     let key, newDay;
-    //     return (
-    //         <div className={"detail-page"}>
-    //             {this.state.windData.length === 0 ? (
-    //                 <div>Loading...</div>
-    //             ) : (
-    //
-    //
-    //
-    //             {this.state.windData.hourly.map( hour => {
-    //                 key = getDate(hour.time, 'key')+ '-' +this.state.windData.id;
-    //                 newDay = '';
-    //                 if(hour.hour === '00') {
-    //                     newDay = (
-    //                         <div className={'day'}>
-    //                             <div className={'weekday'}>{getDate(hour.time, 'weekday')}</div>
-    //                             <div className={'nice-date'}>{getDate(hour.time, 'date')}</div>
-    //                         </div>);
-    //                 }
-    //                 return (
-    //                     <div key={key} className={key}>
-    //                         {newDay}
-    //                         <div className={`hourly ${key}`}>
-    //                             <div className="hour">{getDate(hour.time, 'hour')}</div>
-    //                             <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} /></div>
-    //                             <div className='wind-area'>
-    //                                 <div className="wind">{hour.wind} <span>m/s</span></div>
-    //                                 <div className="gust">({hour.gust})</div>
-    //                             </div>
-    //                             {getWeatherIconByKey(hour.icon)}
-    //                             <div className="temp">{hour.temp}°</div>
-    //                         </div>
-    //                     </div>
-    //                 )
-    //             })}
-    //             )}
-    //
-    //
-    //
-    //         </div>
-    //     );
-    // }
-
-
 }
 
 export default Detail;

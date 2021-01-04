@@ -2,10 +2,7 @@ import React, {Component} from 'react';
 import './Summary.scss';
 import { getCurrentTimestamp} from "../../utils/utils";
 import {cacheAllSpots, getCachedWindData } from "../../utils/weatherData";
-import Direction from '../Direction/Direction';
 import SpotHead from "../SpotHead/SpotHead";
-import spots from "../../spots";
-
 
 class Summary extends Component {
     constructor(props) {

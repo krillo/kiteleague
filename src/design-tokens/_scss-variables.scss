@@ -36,7 +36,7 @@ $wind22: #752222;
 $menu-color: #d2ecce;
 
 
-@mixin side-padding {
+@mixin app-padding {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -72,6 +72,11 @@ $menu-color: #d2ecce;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction:column;
+  align-items: flex-start;
 }
 @mixin wind-colors {
   &.w0 {background-color:$wind0;}
