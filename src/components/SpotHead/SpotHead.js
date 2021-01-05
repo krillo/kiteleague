@@ -9,7 +9,6 @@ class SpotHead extends React.Component {
         super(props);
         console.log('Spot1');
         console.log(props);
-        console.log('Spot2');
     }
 
     render() {
@@ -40,7 +39,7 @@ class SpotHead extends React.Component {
                         </div>
                     </div>
                     <div className="spot-data">
-                        <div className="dir"> <Direction dir={this.props.dir} wind={this.props.wind} gust={this.props.gust} /></div>
+                        <div className="dir"> <Direction dir={this.props.dir} wind={this.props.wind} gust={this.props.gust} dirMin={this.props.dirMin} dirMax={this.props.dirMax}/></div>
                         <div className='wind-area'>
                             <div className="wind">{this.props.wind}</div>
                             <div className="gust">({this.props.gust})</div>

@@ -23,5 +23,43 @@
   }
 }
 .main {
+}
 
+.main-index {
+  @include app-padding;
+}
+
+.site-heading {
+  font-size: 30px;
+  text-transform: uppercase;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  .icon.kitesurfing {
+    width: 40px;
+    margin-left: 15px;
+  }
+}
+.tagline {
+  font-size: 14px;
+  margin-top: -15px;
+}
+
+.ledger-container {
+  margin-top: 60px;
+  h2 {
+    @include flex-column;
+  }
+  .ledger {
+    @include flex-row;
+    justify-content: space-between;
+    .wind-span {
+      .dir {
+        margin-bottom: 10px;
+      }
+      .text {
+        font-size: 14px;
+      }
+    }
+  }
 }

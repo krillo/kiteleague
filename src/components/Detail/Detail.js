@@ -63,7 +63,7 @@ export class Detail extends Component {
                     {newDay}
                     <div className={`hourly ${elementKey} ${daylightClass}`}>
                         <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
-                        <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} /></div>
+                        <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={hour.dirMin} dirMax={hour.dirMax} /></div>
                         <div className='wind-area'>
                             <div className="wind">{hour.wind} <span>m/s</span></div>
                             <div className="gust">({hour.gust})</div>

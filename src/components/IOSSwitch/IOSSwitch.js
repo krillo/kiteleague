@@ -14,7 +14,7 @@ class IOSSwitch extends Component {
             <div className="ios-switch">
                 <div className={'text'}>{ this.props.text }</div>
                 <label className="form-switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" checked={this.props.checked} name={this.props.name}/>
                         <i></i>
                 </label>
             </div>

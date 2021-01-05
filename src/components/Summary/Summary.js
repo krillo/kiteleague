@@ -28,6 +28,8 @@ class Summary extends Component {
         const dir = current.hourly[timestamp].dir;
         const icon = current.hourly[timestamp].icon;
         const temp = current.hourly[timestamp].temp;
+        const dirMin = current.dirMin;
+        const dirMax = current.dirMax;
         return <SpotHead
             key={`summary-head-${this.state.spotId}`}
             id={current.id}
@@ -35,6 +37,7 @@ class Summary extends Component {
             gust={gust} dir={dir}
             temp={temp} icon={icon}
             timestamp={timestamp}
+            dirMin={dirMin} dirMax={dirMax}
         />
     }
 

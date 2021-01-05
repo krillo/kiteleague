@@ -104,9 +104,9 @@ export const getWeatherIconByKey = (imgKey, cssClasses = '') => {
 };
 
 
-export const getIcon = (imgKey, cssClasses = '') => {
-    const src = '/img/icon/' + imgKey + '.svg';
-    return <img className='icon' src={src}/>;
+export const getIcon = (imgKey, type = 'svg', cssClasses = '') => {
+    const src = '/img/icon/' + imgKey + '.' + type;
+    return <img className={`icon ${cssClasses}`} src={src}/>;
 };
 
 /**
