@@ -45,7 +45,7 @@ class App extends Component {
             {'text':'16-18', value: 16},
             {'text':'19-', value: 19},
         ]
-        let inner =  ledger.map((wind) => {
+        let goodDir =  ledger.map((wind) => {
             return (
                     <div key={`wind-span + ${wind.value}`} className={'wind-span'}>
                         <div className={'dir'}><Direction dir={'220'} wind={wind.value} gust={wind.value} dirMin={0} dirMax={360}/></div>
@@ -53,16 +53,20 @@ class App extends Component {
                     </div>
             )
         });
+        let wrongDir =  ledger.map((wind) => {
+            return (
+                    <div key={`wind-span + ${wind.value}`} className={'wind-span'}>
+                        <div className={'dir'}><Direction dir={'220'} wind={wind.value} gust={wind.value} dirMin={0} dirMax={90}/></div>
+                    </div>
+            )
+        });
         return (
             <div className={'ledger-container'}>
                 <h2>Ledger</h2>
-                <div className={'ledger'}> {inner} </div>
-                <div className={'wrong-direction'}>
-                    <div className={'wrong-ledger'}>
-                        <div className={'dir'}><Direction dir={'220'} wind={1} gust={2} dirMin={0} dirMax={180}/></div>
-                        <div className={'text'}>Wrong wind direction</div>
-                    </div>
+                <div className={'ledger'}> {goodDir} </div>
+                <div className={'wrong-direction'}>{wrongDir}
                 </div>
+                <div className={'text wrong-text'}>Wrong wind direction</div>
             </div>
         );
     }

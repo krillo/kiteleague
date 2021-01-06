@@ -65,9 +65,9 @@
     @include flex-row;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 7px;
-    .wrong-ledger {
-      @include flex-column;
-    }
+    padding: 7px;
+  }
+  .wrong-text {
+    @include flex-row;
   }
 }
