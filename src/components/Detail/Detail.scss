@@ -1,18 +1,22 @@
 @import "./../../design-tokens/scss-variables.scss";
 
 .day {
- background-color: $gray5;
+ background-color: $gray2;
   border-top: $gray3;
-  color: white;
+  color: $gray8;
   display: flex;
   justify-content: flex-start;
   @include font-small;
   height: 30px;
   align-items: center;
   padding-left: 10px;
+  border-top: 1px solid $gray3;
   .weekday {
     margin-right:10px
   }
+}
+.detail-hour{
+  background-color: white;
 }
 .hourly{
   display:none;
@@ -53,6 +57,20 @@
   }
   .temp {
     margin-right: 15px;
+  }
+
+  .wind-bar{
+    @include flex-row;
+    width:100px;
+    height:20px;
+    .wind{
+      height:20px;
+      @include wind-colors;
+    }
+    .gust {
+      height:20px;
+      background-color: $gray2;
+    }
   }
 
 }

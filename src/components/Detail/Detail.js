@@ -66,6 +66,21 @@ export class Detail extends Component {
         return isNewDay;
     }
 
+    getWindBar(hour) {
+        let fullWidth = 100;
+        let wind = hour.wind.toFixed(0);
+        let gust = hour.gust.toFixed(0);
+        let windWidth = wind * 5;
+        let gustWidth = (gust-wind) * 5;
+        return (
+            <div className={'wind-bar'}>
+                <div className={`wind w${wind}`} style={{width:windWidth}}></div>
+                <div className={`gust g${gust}`} style={{width:gustWidth}}></div>
+            </div>
+        );
+    }
+
+
     getHourly = (current) => {
         let elementKey, newDay, hour, isoJustDate;
         let iterateDate = {currentDate: null};
@@ -85,17 +100,18 @@ export class Detail extends Component {
                     </div>);
             }
             x.push (
-                <div key={elementKey} className={isoJustDate}>
+                <div key={elementKey} className={`${isoJustDate} detail-hour`}>
                     {newDay}
                     <div className={`hourly ${elementKey} ${daylightClass}`}>
                         <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
+                        {getWeatherIconByKey(hour.icon)}
+                        <div className="temp">{hour.temp}°</div>
                         <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} /></div>
                         <div className='wind-area'>
                             <div className="wind">{hour.wind} <span>m/s</span></div>
                             <div className="gust">({hour.gust})</div>
                         </div>
-                        {getWeatherIconByKey(hour.icon)}
-                        <div className="temp">{hour.temp}°</div>
+                        {this.getWindBar(hour)}
                     </div>
                 </div>
             )
