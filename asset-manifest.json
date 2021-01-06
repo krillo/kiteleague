@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/kiteleague/static/css/main.5da7b595.chunk.css",
+    "main.js": "/kiteleague/static/js/main.fc08719e.chunk.js",
+    "main.js.map": "/kiteleague/static/js/main.fc08719e.chunk.js.map",
+    "runtime-main.js": "/kiteleague/static/js/runtime-main.dd58579a.js",
+    "runtime-main.js.map": "/kiteleague/static/js/runtime-main.dd58579a.js.map",
+    "static/js/2.0ddf3d0c.chunk.js": "/kiteleague/static/js/2.0ddf3d0c.chunk.js",
+    "static/js/2.0ddf3d0c.chunk.js.map": "/kiteleague/static/js/2.0ddf3d0c.chunk.js.map",
+    "index.html": "/kiteleague/index.html",
+    "static/css/main.5da7b595.chunk.css.map": "/kiteleague/static/css/main.5da7b595.chunk.css.map",
+    "static/js/2.0ddf3d0c.chunk.js.LICENSE.txt": "/kiteleague/static/js/2.0ddf3d0c.chunk.js.LICENSE.txt",
+    "static/media/direction-empty.a77c4ca0.svg": "/kiteleague/static/media/direction-empty.a77c4ca0.svg",
+    "static/media/direction.1eb0714b.svg": "/kiteleague/static/media/direction.1eb0714b.svg",
+    "static/media/home.5bef1357.svg": "/kiteleague/static/media/home.5bef1357.svg",
+    "static/media/pin.f8e6a747.svg": "/kiteleague/static/media/pin.f8e6a747.svg",
+    "static/media/settings.f3f15426.svg": "/kiteleague/static/media/settings.f3f15426.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dd58579a.js",
+    "static/js/2.0ddf3d0c.chunk.js",
+    "static/css/main.5da7b595.chunk.css",
+    "static/js/main.fc08719e.chunk.js"
+  ]
+}
