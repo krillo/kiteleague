@@ -5,7 +5,6 @@ import Detail from './components/Detail/Detail';
 import Direction from './components/Direction/Direction';
 import Summary from './components/Summary/Summary';
 import Settings from './components/Settings/Settings';
-import Nav from './components/Nav/Nav';
 import NavFooter from './components/NavFooter/NavFooter';
 import { getIcon } from './utils/utils.js';
 import {

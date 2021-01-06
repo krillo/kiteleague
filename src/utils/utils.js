@@ -1,5 +1,3 @@
-import axios from 'axios';
-import spotsFile from '../spotsFile';
 
 /**
  * Round wind to to 0 decimals
