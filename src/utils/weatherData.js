@@ -1,5 +1,5 @@
 import axios from 'axios';
-import spots from './../spots';
+import spotsFile from '../spotsFile';
 import { getDate, roundWind, isDaylight } from './utils';
 import React from "react";
 
@@ -132,7 +132,7 @@ export const cacheAllSpots = (clearCache = false) => {
         clearLocalStorage();
     }
     let allSpotIds = [];
-    spots.forEach(spot => {
+    spotsFile.forEach(spot => {
             allSpotIds.push(spot.id);
             getWindData(spot.id);
         }
@@ -168,7 +168,7 @@ function getSpotBaseData(spotId = null) {
         return null;
     }
     spotId = parseInt(spotId);
-    const currentSpot = spots.find(spot => spot.id === spotId);
+    const currentSpot = spotsFile.find(spot => spot.id === spotId);
     if( currentSpot === undefined) {
         console.log('Error: no spot with id ' + spotId);
         return null;

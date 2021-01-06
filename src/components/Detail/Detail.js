@@ -15,7 +15,7 @@ export class Detail extends Component {
         this.state = {
             spotId: spotId,
             current: {},
-
+            iterateDate: null,
         }
     }
 
@@ -32,6 +32,8 @@ export class Detail extends Component {
         const dir = current.hourly[timestamp].dir;
         const icon = current.hourly[timestamp].icon;
         const temp = current.hourly[timestamp].temp;
+        const dirMin = current.dirMin;
+        const dirMax = current.dirMax;
         return <SpotHead
             key={`detail-head-${this.state.spotId}`}
             id={current.id}
@@ -39,19 +41,36 @@ export class Detail extends Component {
             gust={gust} dir={dir}
             temp={temp} icon={icon}
             timestamp={timestamp}
+            dirMin={dirMin} dirMax={dirMax}
         />
     }
 
+    isNewDay(hour, iterateDate){
+        let isNewDay = false;
+        let isoJustDate = getDate(hour.timestamp, 'iso-just-date');
+        if(iterateDate.date === null) {
+            iterateDate.date = isoJustDate;
+        }
+        if(iterateDate.date < isoJustDate) {
+            isNewDay = true;
+            iterateDate.date = isoJustDate;
+        }
+        return isNewDay;
+    }
+
     getHourly = (current) => {
-        let elementKey, newDay,visibleHour, hour;
+        let elementKey, newDay, hour, isoJustDate;
+        let iterateDate = {date: null};
         let daylightClass = '';
         let x = [];
             Object.keys(current.hourly).forEach( key => {
             hour = current.hourly[key];
             elementKey = getDate(hour.timestamp, 'key')+ '-' +current.id;
-            newDay = '';
             daylightClass = (hour.isDaylight === true) ? 'daylight' : '';
-            if(hour.hour === '00') {
+            isoJustDate = getDate(hour.timestamp, 'iso-just-date');
+
+            newDay = '';
+            if(this.isNewDay(hour, iterateDate)) {
                 newDay = (
                     <div className={'day'}>
                         <div className={'weekday'}>{getDate(hour.timestamp, 'weekday')}</div>
@@ -59,11 +78,11 @@ export class Detail extends Component {
                     </div>);
             }
             x.push (
-                <div key={elementKey} className={elementKey}>
+                <div key={elementKey} className={isoJustDate}>
                     {newDay}
                     <div className={`hourly ${elementKey} ${daylightClass}`}>
                         <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
-                        <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={hour.dirMin} dirMax={hour.dirMax} /></div>
+                        <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} /></div>
                         <div className='wind-area'>
                             <div className="wind">{hour.wind} <span>m/s</span></div>
                             <div className="gust">({hour.gust})</div>

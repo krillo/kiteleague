@@ -1,5 +1,5 @@
 import axios from 'axios';
-import spots from './../spots';
+import spotsFile from '../spotsFile';
 
 /**
  * Round wind to to 0 decimals
@@ -35,6 +35,7 @@ export const getDate = (jsondate, type) => {
     let minutes = pad(date.getMinutes());
     let time = hour + ':' + minutes;
     let key = jsondate.substring(5, 10)  +  '-' + hour;
+    let isoJustDate = jsondate.substring(0, 10);
     let weekday = weekdays[date.getDay()];
     let weekdayShort = weekdaysShort[date.getDay()];
     switch (type) {
@@ -55,6 +56,9 @@ export const getDate = (jsondate, type) => {
             break;
         case 'weekday-short':
             return weekdayShort;
+            break;
+        case 'iso-just-date':
+            return isoJustDate;
             break;
         default:
             return niceDate;

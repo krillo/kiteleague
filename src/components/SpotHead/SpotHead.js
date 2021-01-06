@@ -33,7 +33,7 @@ class SpotHead extends React.Component {
                             </div>
                         </div>
                         <div className="right">
-                            <div className={'weekday'}>{getDate(this.props.timestamp, 'weekday')}</div>
+                            <div className={'weekday'}>{getDate(this.props.timestamp, 'weekday-short')}</div>
                             <div className={'nice-date'}>{getDate(this.props.timestamp, 'date')}</div>
                             <div className={'nice-date'}>{getDate(this.props.timestamp, 'time')}</div>
                         </div>

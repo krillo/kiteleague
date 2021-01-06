@@ -11,7 +11,7 @@ import { getIcon } from './utils/utils.js';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
+    Route, Link,
 } from "react-router-dom";
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
     }
 
     getSiteHeading = () => {
-        return <h1 className={'site-heading'}>Kite league {getIcon('kitesurfing', 'png', 'kitesurfing')}</h1>
+        return <Link to="/" className={'home'}><h1 className={'site-heading'}>Kite league {getIcon('kitesurfing', 'png', 'kitesurfing')}</h1></Link>
     }
 
     getTagLine = () => {
