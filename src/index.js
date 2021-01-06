@@ -37,7 +37,7 @@ class App extends Component {
 
     getLedger = () => {
         const ledger = [
-            {'text':'0-3', value: 0},
+            {'text':'0-3', value: 1},
             {'text':'4-6', value: 4},
             {'text':'7-9', value: 7},
             {'text':'10-12', value: 10},
@@ -53,8 +53,18 @@ class App extends Component {
                     </div>
             )
         });
-        return ( <div className={'ledger-container'}><h2>Ledger</h2> <div className={'ledger'}>   {inner} </div></div>);
-
+        return (
+            <div className={'ledger-container'}>
+                <h2>Ledger</h2>
+                <div className={'ledger'}> {inner} </div>
+                <div className={'wrong-direction'}>
+                    <div className={'wrong-ledger'}>
+                        <div className={'dir'}><Direction dir={'220'} wind={1} gust={2} dirMin={0} dirMax={180}/></div>
+                        <div className={'text'}>Wrong wind direction</div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
 

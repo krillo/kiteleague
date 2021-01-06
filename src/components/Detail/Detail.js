@@ -45,22 +45,30 @@ export class Detail extends Component {
         />
     }
 
+
+    /**
+     * return true if iteration reaches a new day
+     * NOTICE! iterateDate is an object so it is passed by reference
+     * @param hour
+     * @param iterateDate obj
+     * @returns {boolean}
+     */
     isNewDay(hour, iterateDate){
         let isNewDay = false;
         let isoJustDate = getDate(hour.timestamp, 'iso-just-date');
-        if(iterateDate.date === null) {
-            iterateDate.date = isoJustDate;
+        if(iterateDate.currentDate === null) {
+            iterateDate.currentDate = isoJustDate;
         }
-        if(iterateDate.date < isoJustDate) {
+        if(iterateDate.currentDate < isoJustDate) {
+            iterateDate.currentDate = isoJustDate;
             isNewDay = true;
-            iterateDate.date = isoJustDate;
         }
         return isNewDay;
     }
 
     getHourly = (current) => {
         let elementKey, newDay, hour, isoJustDate;
-        let iterateDate = {date: null};
+        let iterateDate = {currentDate: null};
         let daylightClass = '';
         let x = [];
             Object.keys(current.hourly).forEach( key => {
@@ -68,7 +76,6 @@ export class Detail extends Component {
             elementKey = getDate(hour.timestamp, 'key')+ '-' +current.id;
             daylightClass = (hour.isDaylight === true) ? 'daylight' : '';
             isoJustDate = getDate(hour.timestamp, 'iso-just-date');
-
             newDay = '';
             if(this.isNewDay(hour, iterateDate)) {
                 newDay = (

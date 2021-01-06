@@ -50,16 +50,24 @@
   h2 {
     @include flex-column;
   }
+  .text {
+    font-size: 14px;
+    margin-top:10px;
+  }
   .ledger {
     @include flex-row;
     justify-content: space-between;
     .wind-span {
-      .dir {
-        margin-bottom: 10px;
-      }
-      .text {
-        font-size: 14px;
-      }
+
+    }
+  }
+  .wrong-direction {
+    @include flex-row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 7px;
+    .wrong-ledger {
+      @include flex-column;
     }
   }
 }
