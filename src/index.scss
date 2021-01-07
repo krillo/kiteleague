@@ -51,6 +51,11 @@
   h2 {
     @include flex-column;
   }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
   .text {
     font-size: 14px;
     margin-top:10px;
@@ -58,17 +63,29 @@
   .ledger {
     @include flex-row;
     justify-content: space-between;
-    .wind-span {
-
+    svg {
+      width: 25px;
+      height: 25px;
     }
   }
   .wrong-direction {
     @include flex-row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 7px;
+    padding: 7px 7px 0 7px;
+    svg {
+      width: 25px;
+      height: 25px;
+    }
   }
-  .wrong-text {
+  .wrong-text, .good-text, .align-left {
     @include flex-row;
+  }
+  .gust-text {
+    color: $gray6;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 700;
+    width: 50px;
   }
 }

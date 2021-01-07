@@ -48,7 +48,6 @@ class Summary extends Component {
     spotsSummary = () => {
         console.log(getCurrentTimestamp());
         let current;
-        let spotHeads;
         const spotsSummary = this.state.spotIds.map((spotId) => {
             current = getCachedWindData(spotId);
             return (

@@ -63,10 +63,16 @@ class App extends Component {
         return (
             <div className={'ledger-container'}>
                 <h2>Ledger</h2>
+                <h3 className={'good-text'}>Arrows show wind direction and speed for current spot</h3>
                 <div className={'ledger'}> {goodDir} </div>
-                <div className={'wrong-direction'}>{wrongDir}
-                </div>
-                <div className={'text wrong-text'}>Wrong wind direction</div>
+
+                <h3 className={'wrong-text'}>Empty arrows means wrong wind direction for kiting</h3>
+                <div className={'wrong-direction'}>{wrongDir}</div>
+
+                <h3 className={'align-left'}>Wind gust speed are shown in parenthesis and gray color</h3>
+                <div className={'align-left text gust-text'}>(14)</div>
+
+                <h3 className={'align-left'}>The wind data comes from Yr.no</h3>
             </div>
         );
     }
