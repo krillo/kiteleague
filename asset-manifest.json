@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/kiteleague/static/css/main.fd493137.chunk.css",
-    "main.js": "/kiteleague/static/js/main.8ac77fbd.chunk.js",
-    "main.js.map": "/kiteleague/static/js/main.8ac77fbd.chunk.js.map",
+    "main.js": "/kiteleague/static/js/main.be3e2ba3.chunk.js",
+    "main.js.map": "/kiteleague/static/js/main.be3e2ba3.chunk.js.map",
     "runtime-main.js": "/kiteleague/static/js/runtime-main.dd58579a.js",
     "runtime-main.js.map": "/kiteleague/static/js/runtime-main.dd58579a.js.map",
     "static/js/2.87db917a.chunk.js": "/kiteleague/static/js/2.87db917a.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.dd58579a.js",
     "static/js/2.87db917a.chunk.js",
     "static/css/main.fd493137.chunk.css",
-    "static/js/main.8ac77fbd.chunk.js"
+    "static/js/main.be3e2ba3.chunk.js"
   ]
 }
