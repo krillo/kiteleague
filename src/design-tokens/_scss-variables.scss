@@ -42,6 +42,9 @@ $nav-height: 50px;
 
 
 
+@mixin app-width {
+  max-width:428px;
+}
 @mixin app-padding {
   padding-left: 15px;
   padding-right: 15px;
@@ -72,7 +75,12 @@ $nav-height: 50px;
 @mixin font-small {
   font-size:16px;
   line-height: 1;
-  font-weight: bold;
+  font-weight: 700;
+}
+@mixin font-mini {
+  font-size:13px;
+  line-height: 1;
+  font-weight: 700;
 }
 @mixin flex-row {
   display: flex;

@@ -48,6 +48,7 @@ const getSpotDataFromAPI = async (currentSpot) => {
     let res;
     const refined = await axios.get(url)
         .then(response => {
+            localStorage.setItem( getSpotKey(currentSpot) + '-RAW', JSON.stringify(response));
             const refined = refineWindData(currentSpot, response);
             return refined;
         })

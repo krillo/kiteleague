@@ -39,25 +39,18 @@ export const getDate = (jsondate, type) => {
     switch (type) {
         case 'date':
             return niceDate;
-            break;
         case 'time':
             return time;
-            break;
         case 'hour':
             return hour;
-            break;
         case 'key':
             return key;
-            break;
         case 'weekday':
             return weekday;
-            break;
         case 'weekday-short':
             return weekdayShort;
-            break;
         case 'iso-just-date':
             return isoJustDate;
-            break;
         default:
             return niceDate;
     }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Settings.scss';
 import IOSSwitch from '../IOSSwitch/IOSSwitch';
 import { settingsFile } from './../../settingsFile';
-import { clearLocalStorage} from "../../utils/weatherData";
+import { clearLocalStorage, cacheAllSpots} from "../../utils/weatherData";
 
 class Settings extends Component {
     constructor(props) {
@@ -60,6 +60,11 @@ class Settings extends Component {
         alert('button click');
     }
 
+    clearAndPrimeCaches = () => {
+        clearLocalStorage();
+        cacheAllSpots();
+    }
+
     render() {
         return (
             <div className="settings">
@@ -69,8 +74,9 @@ class Settings extends Component {
                         { this.getSettings() }
                     </li>
                 </ul>
-                <button className={'clear-cache'} onClick={() => clearLocalStorage()}>Clear cache</button>
-                <button className={'clear-cache'} onClick={() => this.apa()}>Clear cache</button>
+                {/*<button className={'clear-cache'} onClick={() => clearLocalStorage()}>Clear cache</button>*/}
+                <button className={'clear-cache'} onClick={() => this.clearAndPrimeCaches()}>Clear cache</button>
+                {/*<button className={'clear-cache'} onClick={() => this.apa()}>Clear cache</button>*/}
             </div>
         )
     }
