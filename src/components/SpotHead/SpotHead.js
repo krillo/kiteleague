@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { getDate, getWeatherIconByKey} from './../../utils/utils.js';
+import { getPath } from './../../settingsFile';
 import Direction from '../Direction/Direction';
 import './SpotHead.scss';
 
@@ -18,7 +19,7 @@ class SpotHead extends React.Component {
 
         return (
             <Link to={{
-                      pathname: "/detail",
+                      pathname: getPath.detail,
                       search: spotid,
                   }}
                   props={this.props}>

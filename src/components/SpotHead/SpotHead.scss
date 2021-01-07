@@ -30,8 +30,7 @@
         @include wind-colors;
       }
       .name {
-        font-size: 3.2em;
-        font-weight: 400;
+       @include font-big;
       }
     }
     .right {

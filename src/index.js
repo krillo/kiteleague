@@ -12,6 +12,7 @@ import {
     Switch,
     Route, Link,
 } from "react-router-dom";
+import {getPath} from "./settingsFile";
 
 class App extends Component {
     constructor(props) {
@@ -70,8 +71,6 @@ class App extends Component {
         );
     }
 
-
-
     render() {
         return (
         <React.StrictMode>
@@ -80,19 +79,19 @@ class App extends Component {
                     <div className={'main'}>
                         {this.getSiteHeading()}
                         <Switch>
-                            <Route exact path="/">
+                            <Route exact path={getPath.home}>
                                 <div className={'main-index'}>
                                     {this.getTagLine()}
                                     {this.getLedger()}
                                 </div>
                             </Route>
-                            <Route path="/detail">
+                            <Route path={getPath.detail}>
                                 <Detail spotId={"1"} />
                             </Route>
-                            <Route path="/summary">
+                            <Route path={getPath.summary}>
                                 <Summary  />
                             </Route>
-                            <Route path="/settings">
+                            <Route path={getPath.settings}>
                                 <Settings  />
                             </Route>
                         </Switch>

@@ -1,3 +1,4 @@
+import { getPath } from "../settingsFile";
 
 /**
  * Round wind to to 0 decimals
@@ -94,13 +95,13 @@ export const getCurrentTimestamp = () => {
  * @returns {JSX.Element}
  */
 export const getWeatherIconByKey = (imgKey, cssClasses = '') => {
-    const src = '/img/weathericon/svg/' + imgKey + '.svg';
+    const src = getPath.weatherIcon + imgKey + '.svg';
     return <img className='icon' src={src}/>;
 };
 
 
 export const getIcon = (imgKey, type = 'svg', cssClasses = '') => {
-    const src = '/img/icon/' + imgKey + '.' + type;
+    const src = getPath.img + imgKey + '.' + type;
     return <img className={`icon ${cssClasses}`} src={src}/>;
 };
 

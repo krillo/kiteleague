@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './NavFooter.scss';
 import { Link } from "react-router-dom";
-import { getIcon } from "../../utils/utils";
 import {ReactComponent as HomeSVG} from '../../design-tokens/icons/home.svg';
 import {ReactComponent as PinSVG} from '../../design-tokens/icons/pin.svg';
 import {ReactComponent as SettingsSVG} from '../../design-tokens/icons/settings.svg';
+import { getPath } from "../../settingsFile";
 
 class NavFooter extends Component {
     constructor(props) {
@@ -23,9 +23,9 @@ class NavFooter extends Component {
     render() {
         return (
             <div className="nav-footer">
-                <Link to="/" className={'home'}><HomeSVG /></Link>
-                <Link to="/summary" className={'sites'}><PinSVG /></Link>
-                <Link to="/settings" className={'settings'}><SettingsSVG /></Link>
+                <Link to={getPath.home} className={'home'}><HomeSVG /></Link>
+                <Link to={getPath.summary} className={'sites'}><PinSVG /></Link>
+                <Link to={getPath.settings} className={'settings'}><SettingsSVG /></Link>
             </div>
         )
     }
