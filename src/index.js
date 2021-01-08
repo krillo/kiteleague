@@ -20,7 +20,13 @@ class App extends Component {
     }
 
     getSiteHeading = () => {
-        return <Link to="/" className={'home'}><h1 className={'site-heading'}>Kite league {getIcon('kitesurfing', 'png', 'kitesurfing')}</h1></Link>
+        return (
+        <Link to="/" className={'home'}>
+            <h1 className={'site-heading'}>
+                Kite league {getIcon('kitesurfing', 'png', 'kitesurfing')}
+            </h1>
+        </Link>
+        );
     }
 
     getTagLine = () => {
@@ -63,16 +69,14 @@ class App extends Component {
         return (
             <div className={'ledger-container'}>
                 <h2>Ledger</h2>
-                <h3 className={'good-text'}>Arrows show wind direction and speed for current spot</h3>
+                <h3 className={'good-text'}>Arrows show wind direction and speed</h3>
                 <div className={'ledger'}> {goodDir} </div>
 
-                <h3 className={'wrong-text'}>Empty arrows means wrong wind direction for kiting</h3>
+                <h3 className={'wrong-text'}>Empty arrows means wrong wind direction</h3>
                 <div className={'wrong-direction'}>{wrongDir}</div>
 
-                <h3 className={'align-left'}>Wind gust speed are shown in parenthesis and gray color</h3>
+                <h3 className={'align-left'}>Wind gust speed are gray and shown in parenthesis</h3>
                 <div className={'align-left text gust-text'}>(14)</div>
-
-                <h3 className={'align-left'}>The wind data comes from Yr.no</h3>
             </div>
         );
     }
@@ -82,8 +86,8 @@ class App extends Component {
         <React.StrictMode>
             <Router>
                 <div className="container">
+                    {this.getSiteHeading()}
                     <div className={'main'}>
-                        {this.getSiteHeading()}
                         <Switch>
                             <Route exact path={getPath.home}>
                                 <div className={'main-index'}>

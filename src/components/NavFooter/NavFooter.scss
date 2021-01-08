@@ -7,7 +7,7 @@
   height:$nav-height;
   z-index:10;
   background-color: $app-bg;
-  border-top: 2px solid $gray3;
+  border-top: 1px solid $gray3;
   @include flex-row;
   align-content: space-between;
   @include app-padding;
