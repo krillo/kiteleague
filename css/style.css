@@ -3,33 +3,17 @@ html {
     font-size: 62.5%;
 }
 body {
-    background-color: ivory;
+    background-color: white;
     max-width:736px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin:0;
 
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+
 }
 div {
     box-sizing: border-box;
-}
-.facit {
-    text-align: center;
-    padding: 40px 0;
-    background-color: ivory;
-    border-top: #bbb solid 2px;
-    margin-top: 100px;
-
-}
-.facit img {
-    margin-right:20px;
-    width:345px;
-    overflow: hidden;
 }
 #root {
     text-align: center;
