@@ -85,6 +85,7 @@ export class Detail extends Component {
         let elementKey, newDay, hour, isoJustDate;
         let iterateDate = {currentDate: null};
         let daylightClass = '';
+        let  today = true; //just fist iteration
         let x = [];
             Object.keys(current.hourly).forEach( key => {
             hour = current.hourly[key];
@@ -92,7 +93,8 @@ export class Detail extends Component {
             daylightClass = (hour.isDaylight === true) ? 'daylight' : '';
             isoJustDate = getDate(hour.timestamp, 'iso-just-date');
             newDay = '';
-            if(this.isNewDay(hour, iterateDate)) {
+            if(this.isNewDay(hour, iterateDate) || today === true) {
+                today = false;
                 newDay = (
                     <div className={'day'}>
                         <div className={'weekday'}>{getDate(hour.timestamp, 'weekday')}</div>
@@ -102,14 +104,19 @@ export class Detail extends Component {
             x.push (
                 <div key={elementKey} className={`${isoJustDate} detail-hour`}>
                     {newDay}
-                    <div className={`hourly ${elementKey} ${daylightClass}`}>
-                        <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
-                        {getWeatherIconByKey(hour.icon)}
-                        <div className="temp">{hour.temp}°</div>
-                        <div className="dir"> <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} /></div>
-                        <div className='wind-area'>
-                            <div className="wind">{hour.wind} <span>m/s</span></div>
+                    <div className={`hourly ${isoJustDate} ${daylightClass}`}>
+                        <div className={'part part-weather'}>
+                            <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
+                            {getWeatherIconByKey(hour.icon)}
+                            <div className="temp">{hour.temp}°</div>
+                        </div>
+                        <div className={'part part-wind'}>
+                            <div className="dir">
+                                <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} />
+                            </div>
+                            <div className="wind">{hour.wind} </div>
                             <div className="gust">({hour.gust})</div>
+                            <div className="unit">m/s</div>
                         </div>
                         {this.getWindBar(hour)}
                     </div>

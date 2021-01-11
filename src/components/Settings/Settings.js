@@ -8,14 +8,18 @@ class Settings extends Component {
     constructor(props) {
         super(props);
         this.state =  {};
-        settingsFile.map( setting => {
-            switch (setting.type) {
-                case "button":
-                    this.state[setting.id] = setting.value;
-                case "checkbox":
-                    this.state[setting.id] = setting.value;
-                default:
-            }
+        settingsFile.map( (setting) => {
+            console.log(setting.id , setting.value);
+            //this.state = {setting.id : setting.value};
+            // switch (setting.type) {
+            //     case "button":
+            //         this.state = {setting.id : setting.value};
+            //         break;
+            //     case "checkbox":
+            //         this.state[setting.id] = setting.value;
+            //         break;
+            //     default:
+            // }
         })
         //this.setSettingsState();
         let i = 0;

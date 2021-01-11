@@ -29,31 +29,58 @@
   &.daylight{
     display:flex;
   }
-  .hour {
-  }
   .dir svg{
     width:17px;
   }
-  .wind-area {
+  .part {
+    @include flex-row;
+  }
+  .part-wind {
+    width:160px;
     display: flex;
-    justify-content: space-between;
-    width: 120px;
+    justify-content: flex-start;
+    .dir {
+      width:43px;
+    }
     .wind{
-      @include font-small;
-      width:65px;
-      span {
-        font-size: 12px;
-        font-weight: 400;
-      }
+     margin-right: 5px;
     }
     .gust{
-      color: $gray5;
+      color: $gray6;
       @include font-small;
-      width: 50px;
+      margin-right: 5px;
     }
+    .unit{
+      @include font-mini;
+    }
+  }
+
+  //.wind-area {
+  //  display: flex;
+  //  justify-content: space-between;
+  //  width: 120px;
+  //  .wind{
+  //    @include font-small;
+  //    width:65px;
+  //    span {
+  //      font-size: 12px;
+  //      font-weight: 400;
+  //    }
+  //  }
+  //  .gust{
+  //    color: $gray5;
+  //    @include font-small;
+  //    width: 50px;
+  //  }
+  //}
+
+
+  .hour {
+    margin-right: 10px;
   }
   .icon {
     width:30px;
+    margin-right: 10px;
   }
   .temp {
     margin-right: 15px;
