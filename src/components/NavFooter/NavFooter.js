@@ -9,15 +9,6 @@ import { getPath } from "../../settingsFile";
 class NavFooter extends Component {
     constructor(props) {
         super(props);
-        this.state =  {
-        }
-    }
-
-    openNav = () => {
-        document.getElementById("mySidenav").style.width = '100%';
-    }
-    closeNav = () => {
-        document.getElementById("mySidenav").style.width = '0';
     }
 
     render() {

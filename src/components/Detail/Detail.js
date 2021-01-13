@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Detail.scss';
-import { getSpotIdFromUrl, getCurrentTimestamp, getWeatherIconByKey, getDate } from "../../utils/utils";
+import { getSpotIdFromUrl, getCurrentTimestamp, getWeatherIconByKey, getDate, isDaylight } from "../../utils/utils";
 import {clearLocalStorage, getWindData} from "../../utils/weatherData";
 import Direction from '../Direction/Direction';
 import SpotHead from "../SpotHead/SpotHead";
@@ -80,6 +80,15 @@ export class Detail extends Component {
         );
     }
 
+    noMoreDaylightText = (timestamp) => {
+        if(getDate(timestamp, 'is-today')) {
+            const now = new Date();
+            if(!isDaylight(now.getHours())) {
+                return 'active';
+            }
+        }
+        return '';
+    }
 
     getHourly = (current) => {
         let elementKey, newDay, hour, isoJustDate;
@@ -96,10 +105,17 @@ export class Detail extends Component {
             if(this.isNewDay(hour, iterateDate) || today === true) {
                 today = false;
                 newDay = (
-                    <div className={'day'}>
-                        <div className={'weekday'}>{getDate(hour.timestamp, 'weekday')}</div>
-                        <div className={'nice-date'}>{getDate(hour.timestamp, 'date')}</div>
-                    </div>);
+                    <div className={'new-day'}>
+                        <div className={'day'}>
+                            <div className={'weekday'}>{getDate(hour.timestamp, 'weekday')}</div>
+                            <div className={'nice-date'}>{getDate(hour.timestamp, 'date')}</div>
+                        </div>
+                        <div className={`no-more-daylight ${this.noMoreDaylightText(hour.timestamp)}`}>
+                            No more daylight today...
+                        </div>
+                    </div>
+
+                );
             }
             x.push (
                 <div key={elementKey} className={`${isoJustDate} detail-hour`}>
@@ -115,7 +131,7 @@ export class Detail extends Component {
                                 <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} />
                             </div>
                             <div className="wind">{hour.wind} </div>
-                            <div className="gust">({hour.gust})</div>
+                            <div className={`gust g${hour.gust} `} >({hour.gust})</div>
                             <div className="unit">m/s</div>
                         </div>
                         {this.getWindBar(hour)}

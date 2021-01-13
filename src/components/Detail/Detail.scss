@@ -15,6 +15,20 @@
     margin-right:10px
   }
 }
+
+.no-more-daylight {
+  @include flex-row;
+  @include app-padding;
+  @include font-mini;
+  display:none;
+  font-weight: 400;
+  height: 30px;
+  border-top: 1px solid $gray3;
+  &.active {
+    display:flex;
+  }
+}
+
 .detail-hour{
   background-color: white;
 }
@@ -46,9 +60,13 @@
      margin-right: 5px;
     }
     .gust{
+      display:flex;
       color: $gray6;
       @include font-small;
       margin-right: 5px;
+      &.g0 {
+        display:none;
+      }
     }
     .unit{
       @include font-mini;
@@ -83,7 +101,7 @@
     margin-right: 10px;
   }
   .temp {
-    margin-right: 15px;
+
   }
 
   .wind-bar{

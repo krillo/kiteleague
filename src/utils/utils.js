@@ -14,9 +14,10 @@ export const roundWind = (wind) => {
  * date - '16 dec'
  * time - '22:00'
  * hour - '22'
- * key  - '12-16-08'
- * weekday  - 'Wednesday'
- * weekday-short  - 'Wed'
+ * key - '12-16-08'
+ * weekday - 'Wednesday'
+ * weekday-short - 'Wed'
+ * is-today - boolean
  *
  * @param jsondate
  * @param type
@@ -27,6 +28,7 @@ export const getDate = (jsondate, type) => {
     const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const weekdaysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const date = new Date(jsondate);
+    const today = new Date();
     let monthName = months[date.getMonth()];
     let day = date.getDate();
     let niceDate = day + ' ' + monthName;
@@ -37,6 +39,12 @@ export const getDate = (jsondate, type) => {
     let isoJustDate = jsondate.substring(0, 10);
     let weekday = weekdays[date.getDay()];
     let weekdayShort = weekdaysShort[date.getDay()];
+    let isToday = false;
+    if(date.getDate() == today.getDate() &&
+        date.getMonth() == today.getMonth() &&
+        date.getFullYear() == today.getFullYear()) {
+        isToday = true;
+    }
     switch (type) {
         case 'date':
             return niceDate;
@@ -52,6 +60,8 @@ export const getDate = (jsondate, type) => {
             return weekdayShort;
         case 'iso-just-date':
             return isoJustDate;
+        case 'is-today':
+            return isToday;
         default:
             return niceDate;
     }
@@ -118,72 +128,6 @@ export function isDaylight(hour) {
     }
     return false;
 }
-
-// /**
-//  * Get spot data
-//  * The data is fetched from yr.no by axios
-//  * The data is cached in the local storage
-//  *
-//  * @param spotId
-//  * @returns {null|any|Promise<AxiosResponse<any>>}
-//  */
-// export const getWindData = (spotId = null) => {
-//     //localStorage.clear();
-//     const key = 'spotId' + spotId;
-//     if(spotId === null) {
-//         console.log('Error: no spotId');
-//         return null;
-//     }
-//     const currentSpot = spots.find(x => x.id === spotId);
-//     if( currentSpot === undefined) {
-//         console.log('Error: no spot with id ' + spotId);
-//         return null;
-//     }
-//
-//     currentSpot.hourly = null;
-//     let url = 'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=' + currentSpot.lat + '&lon=' + currentSpot.lon;
-//     let hourly = JSON.parse(localStorage.getItem(key));
-//     if ( hourly ) {
-//         return hourly;
-//     } else  {
-//         const spotData = axios.get(url)
-//             .then(res => {
-//                 localStorage.setItem(key + '-RAW', JSON.stringify(res));
-//                 const timeseries = res.data.properties.timeseries;
-//                 //console.log(res.data);
-//                 const hourly = timeseries.map((arr) => {
-//                     let windObj = {
-//                         timestamp: arr.time,
-//                         temp: arr.data.instant.details.air_temperature.toFixed(0),
-//                         dir: arr.data.instant.details.wind_from_direction,
-//                         hour: getDate(arr.time, 'hour'),
-//                         key: getDate(arr.time, 'key'),
-//                         isDaylight: isDaylight(getDate(arr.time, 'hour')),
-//                     };
-//                     if('wind_speed_of_gust' in arr.data.instant.details) {
-//                         windObj.wind = arr.data.instant.details.wind_speed;
-//                         windObj.gust = parseInt(arr.data.instant.details.wind_speed_of_gust.toFixed(0));
-//                     } else {
-//                         windObj.wind = parseInt(arr.data.instant.details.wind_speed.toFixed(0));
-//                         windObj.gust = 0;
-//                     }
-//                     if ('next_1_hours' in arr.data) {
-//                         windObj.icon = arr.data.next_1_hours.summary.symbol_code;
-//                     } else if ('next_6_hours' in arr.data) {
-//                         windObj.icon = arr.data.next_6_hours.summary.symbol_code;
-//                     } else {
-//                         windObj.icon = null;
-//                     }
-//                     return windObj;
-//                 });
-//                 //console.log('Store new wind data');
-//                 currentSpot.hourly = hourly;
-//                 localStorage.setItem(key, JSON.stringify(currentSpot));
-//                 return currentSpot;
-//             });
-//         return spotData;
-//     }
-// };
 
 /**
  * return the spotId for url search params
