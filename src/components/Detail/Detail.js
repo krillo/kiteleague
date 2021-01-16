@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import './Detail.scss';
-import { getSpotIdFromUrl, getCurrentTimestamp, getWeatherIconByKey, getDate, isDaylight } from "../../utils/utils";
-import {clearLocalStorage, getWindData} from "../../utils/weatherData";
+import {
+    getSpotIdFromUrl,
+    getCurrentTimestamp,
+    getWeatherIconByKey,
+    getDate,
+    isDaylight,
+    getSetting,
+    setSetting
+} from "../../utils/utils";
+import {clearSessionStorage, getWindData} from "../../utils/weatherData";
 import Direction from '../Direction/Direction';
 import SpotHead from "../SpotHead/SpotHead";
 
@@ -16,13 +24,28 @@ export class Detail extends Component {
             spotId: spotId,
             current: {},
             iterateDate: null,
+            showOnlyDaylight: getSetting('showOnlyDaylight', true),
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentDidMount() {
         const windDataPromise = getWindData(this.state.spotId);
         windDataPromise.then(windData => this.setState({ current: windData }));
 
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value    });
+        if(name === 'showOnlyDaylight') {
+            let showOnlyDaylight = getSetting('showOnlyDaylight');
+            showOnlyDaylight.value = value;
+            setSetting('showOnlyDaylight', showOnlyDaylight);
+        }
     }
 
     getSpotHead = (current) => {
@@ -94,7 +117,14 @@ export class Detail extends Component {
         let elementKey, newDay, hour, isoJustDate;
         let iterateDate = {currentDate: null};
         let daylightClass = '';
-        let  today = true; //just fist iteration
+        let showAllClass = '';
+        if (this.state.showOnlyDaylight) {
+            showAllClass = '';
+        } else {
+            showAllClass = 'show-all';
+        }
+
+        let today = true; //just fist iteration
         let x = [];
             Object.keys(current.hourly).forEach( key => {
             hour = current.hourly[key];
@@ -120,7 +150,7 @@ export class Detail extends Component {
             x.push (
                 <div key={elementKey} className={`${isoJustDate} detail-hour`}>
                     {newDay}
-                    <div className={`hourly ${isoJustDate} ${daylightClass}`}>
+                    <div className={`hourly ${isoJustDate} ${daylightClass} ${showAllClass}`}>
                         <div className={'part part-weather'}>
                             <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
                             {getWeatherIconByKey(hour.icon)}
@@ -163,6 +193,10 @@ export class Detail extends Component {
                 ) : (
                     <div>
                         { spotHead }
+                        <label>
+                            Show only daylight:
+                            <input name="showOnlyDaylight" type="checkbox" checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
+                        </label>
                         { hourly }
                     </div>
                 )}

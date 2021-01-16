@@ -3,7 +3,8 @@ import {ReactComponent as PinSVG} from "./design-tokens/icons/pin.svg";
 import React from "react";
 
 export const settingsFile = [
-    {id: 'isDaylight', text: 'Show only daylight hours', type: 'checkbox',  value: 'checked'},
+    {id: 'showOnlyDaylight', text: 'Show only daylight hours', type: 'checkbox',  value: true},
+    {id: 'showKitesurf', text: 'Show kite or SUP data', type: 'checkbox',  value: true},
     {id: 'clearCache', text: 'Clear cache', type: 'button', value:'not cleared'},
 ];
 

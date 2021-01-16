@@ -14,7 +14,7 @@ import React from "react";
  */
 export const getWindData = async (spotId = null) => {
     let currentSpot = getSpotBaseData(spotId);
-    let hourly = getSpotDataFromLocalStorage(currentSpot);
+    let hourly = getSpotDataFromSessionStorage(currentSpot);
     if( hourly ) {
         return hourly;
     }
@@ -24,7 +24,7 @@ export const getWindData = async (spotId = null) => {
 export const getCachedWindData = (spotId = null) => {
     if(spotId !== null) {
         let currentSpot = getSpotBaseData(spotId);
-        let hourly = getSpotDataFromLocalStorage(currentSpot);
+        let hourly = getSpotDataFromSessionStorage(currentSpot);
         if( hourly ) {
             return hourly;
         }
@@ -32,9 +32,9 @@ export const getCachedWindData = (spotId = null) => {
     return null;
 };
 
-function getSpotDataFromLocalStorage (currentSpot) {
+function getSpotDataFromSessionStorage (currentSpot) {
     const key = getSpotKey(currentSpot);
-    let hourly = JSON.parse(localStorage.getItem(key));
+    let hourly = JSON.parse(sessionStorage.getItem(key));
     if ( !hourly ) {
         return null;
     }
@@ -48,7 +48,7 @@ const getSpotDataFromAPI = async (currentSpot) => {
     let res;
     const refined = await axios.get(url)
         .then(response => {
-            localStorage.setItem( getSpotKey(currentSpot) + '-RAW', JSON.stringify(response));
+            sessionStorage.setItem( getSpotKey(currentSpot) + '-RAW', JSON.stringify(response));
             const refined = refineWindData(currentSpot, response);
             return refined;
         })
@@ -90,7 +90,7 @@ function refineWindData(currentSpot, res) {
         hourly[timestamp] = windObj;
     });
     currentSpot.hourly = hourly;
-    localStorage.setItem( getSpotKey(currentSpot), JSON.stringify(currentSpot));
+    sessionStorage.setItem( getSpotKey(currentSpot), JSON.stringify(currentSpot));
     return currentSpot;
 }
 
@@ -111,11 +111,11 @@ function getSpotKey(currentSpot) {
  * @param key
  * @returns {boolean}
  */
-export const clearLocalStorage = (key = null) => {
+export const clearSessionStorage = (key = null) => {
     if (key) {
-        localStorage.removeItem(key)
+        sessionStorage.removeItem(key)
     } else {
-        localStorage.clear();
+        sessionStorage.clear();
     }
     return true;
 }
@@ -130,7 +130,7 @@ export const clearLocalStorage = (key = null) => {
  */
 export const cacheAllSpots = (clearCache = false) => {
     if(clearCache) {
-        clearLocalStorage();
+        clearSessionStorage();
     }
     let allSpotIds = [];
     spotsFile.forEach(spot => {

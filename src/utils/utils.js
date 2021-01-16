@@ -1,4 +1,4 @@
-import { getPath } from "../settingsFile";
+import {getPath, settingsFile} from "../settingsFile";
 
 /**
  * Round wind to to 0 decimals
@@ -142,4 +142,59 @@ export const getSpotIdFromUrl = () => {
         spotId = 1;
     }
     return parseInt(spotId);
+}
+
+/**
+ * Prime all setting to localStorage.
+ * If they already exist then leave them else add them
+ * @returns {array}
+ */
+export function primeSettings() {
+    let key = '';
+    let settings = settingsFile;
+    settings.map(setting => {
+        key = setting.id;
+        const fromStorage = getSetting(key);
+        if (!fromStorage) {
+            setSetting(key, setting);
+        }
+    })
+}
+
+/**
+ * get setting from localStorage
+ * return the whole obj if not 'getOnlyValue' is set to true
+ * the actual setting is always stored as the .value attribute
+ * @param key
+ * @param getOnlyValue
+ * @returns {boolean|any}
+ */
+export function getSetting(key, getOnlyValue = false) {
+    try {
+        const setting = JSON.parse(localStorage.getItem(key));
+        if(getOnlyValue) {
+            return setting.value;
+        }
+        return setting;
+    } catch(e) {
+        console.log('Error getting value from localStorage, key: ' + key);
+        return false;
+    }
+}
+
+/**
+ * set a setting in localStorage
+ * the setting should be an object with this format {id:'xxx', value:true}
+ * @param key
+ * @param obj
+ * @returns {boolean}
+ */
+export function setSetting(key, obj) {
+    try {
+        localStorage.setItem(key, JSON.stringify(obj));
+        return true;
+    } catch(e) {
+        console.log('Error setting value in localStorage, key: ' + key + ' value: ' + obj);
+        return false;
+    }
 }

@@ -6,17 +6,19 @@ import Direction from './components/Direction/Direction';
 import Summary from './components/Summary/Summary';
 import Settings from './components/Settings/Settings';
 import NavFooter from './components/NavFooter/NavFooter';
-import { getIcon } from './utils/utils.js';
+import { getIcon, primeSettings, getSetting, setSetting } from './utils/utils.js';
 import {
     BrowserRouter as Router,
     Switch,
     Route, Link,
 } from "react-router-dom";
-import {getPath} from "./settingsFile";
+import { getPath } from "./settingsFile";
+
 
 class App extends Component {
     constructor(props) {
         super(props);
+        primeSettings();
     }
 
     getSiteHeading = () => {
@@ -116,32 +118,3 @@ class App extends Component {
 export default App;
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-
-
-// ReactDOM.render(
-//     <React.StrictMode>
-//         <Router>
-//             <div className="container">
-//                 <div className={'main'}>
-//                     <Nav />
-//                     <Switch>
-//                         <Route exact path="/">
-//                             index.html
-//                         </Route>
-//                         <Route path="/detail">
-//                             <Detail spotId={"1"} />
-//                         </Route>
-//                         <Route path="/summary">
-//                             <Summary  />
-//                         </Route>
-//                         <Route path="/settings">
-//                             <Settings  />
-//                         </Route>
-//                     </Switch>
-//                 </div>
-//             </div>
-//         </Router>
-//     </React.StrictMode>,
-//     document.getElementById('root')
-// );

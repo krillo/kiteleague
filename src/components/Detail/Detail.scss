@@ -43,6 +43,9 @@
   &.daylight{
     display:flex;
   }
+  &.show-all{
+    display:flex;
+  }
   .dir svg{
     width:17px;
   }
