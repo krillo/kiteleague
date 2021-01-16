@@ -12,9 +12,9 @@ class IOSSwitch extends Component {
     render() {
         return (
             <div className="ios-switch">
-                <div className={'text'}>{ this.props.text }</div>
+                <div className={'text'}>{ this.props.labelText }</div>
                 <label className="form-switch">
-                    <input type="checkbox" checked={this.props.checked} name={this.props.name}/>
+                    <input type="checkbox" checked={this.props.checked} name={this.props.name} onChange={this.props.onChange}/>
                         <i></i>
                 </label>
             </div>

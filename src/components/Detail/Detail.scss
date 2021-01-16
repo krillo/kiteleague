@@ -1,5 +1,14 @@
 @import "./../../design-tokens/scss-variables.scss";
 
+.detail-head {
+  background-color: $gray2;
+  margin-bottom: 10px;
+  border-bottom: solid 1px $gray3;
+  .name {
+    @include font-big;
+  }
+}
+
 .day {
  background-color: $gray2;
   border-top: $gray3;

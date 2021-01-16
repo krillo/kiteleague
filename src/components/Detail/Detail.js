@@ -12,6 +12,7 @@ import {
 import {clearSessionStorage, getWindData} from "../../utils/weatherData";
 import Direction from '../Direction/Direction';
 import SpotHead from "../SpotHead/SpotHead";
+import IOSSwitch from "../IOSSwitch/IOSSwitch";
 
 
 export class Detail extends Component {
@@ -192,11 +193,10 @@ export class Detail extends Component {
                     </div>
                 ) : (
                     <div>
-                        { spotHead }
-                        <label>
-                            Show only daylight:
-                            <input name="showOnlyDaylight" type="checkbox" checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
-                        </label>
+                        <div className="detail-head">
+                            <div className="name">{current.name}</div>
+                            <IOSSwitch labelText={'Show only daylight:'} name={"showOnlyDaylight"} checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
+                        </div>
                         { hourly }
                     </div>
                 )}
@@ -205,3 +205,6 @@ export class Detail extends Component {
 }
 
 export default Detail;
+
+
+//<input name="showOnlyDaylight" type="checkbox" checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
