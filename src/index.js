@@ -87,7 +87,7 @@ class App extends Component {
     render() {
         return (
         <React.StrictMode>
-            <HashRouter basename="/kiteleague">
+            <Router basename="/kiteleague">
                 <div className="container">
                     {this.getSiteHeading()}
                     <div className={'main'}>
@@ -111,7 +111,7 @@ class App extends Component {
                     </div>
                 </div>
                 <NavFooter />
-            </HashRouter>
+            </Router>
         </React.StrictMode>
         );
     }
