@@ -6,7 +6,8 @@ import Direction from './components/Direction/Direction';
 import Summary from './components/Summary/Summary';
 import Settings from './components/Settings/Settings';
 import NavFooter from './components/NavFooter/NavFooter';
-import { getIcon, primeSettings, getSetting, setSetting } from './utils/utils.js';
+import { getIcon, primeSettings} from './utils/utils.js';
+import { cacheAllSpots } from './utils/weatherData';
 import {
     BrowserRouter as Router,
     HashRouter,
@@ -20,6 +21,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         primeSettings();
+        cacheAllSpots(true);
     }
 
     getSiteHeading = () => {
@@ -98,7 +100,7 @@ class App extends Component {
                                     {this.getLedger()}
                                 </div>
                             </Route>
-                            <Route exact path={getPath.detail}>
+                            <Route path={getPath.detail}>
                                 <Detail spotId={"1"} />
                             </Route>
                             <Route exact path={getPath.summary}>

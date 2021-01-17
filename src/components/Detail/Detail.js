@@ -18,6 +18,7 @@ import IOSSwitch from "../IOSSwitch/IOSSwitch";
 export class Detail extends Component {
     constructor(props) {
         super(props);
+        //let spotId = getSpotIdFromUrl();
         let spotId = getSpotIdFromUrl();
         console.log('spotId');
         console.log(spotId);

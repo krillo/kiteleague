@@ -32,8 +32,8 @@ export const getDate = (jsondate, type) => {
     let monthName = months[date.getMonth()];
     let day = date.getDate();
     let niceDate = day + ' ' + monthName;
-    let hour = pad(date.getHours());
-    let minutes = pad(date.getMinutes());
+    let hour = pad(date.getUTCHours());
+    let minutes = pad(date.getUTCMinutes());
     let time = hour + ':' + minutes;
     let key = jsondate.substring(5, 10)  +  '-' + hour;
     let isoJustDate = jsondate.substring(0, 10);
@@ -129,19 +129,35 @@ export function isDaylight(hour) {
     return false;
 }
 
+// /**
+//  * return the spotId for url search params
+//  * if no param return the default spotId 1
+//  * @returns {number}
+//  */
+// export const getSpotIdFromUrl = () => {
+//     const paramsString = window.location.search;
+//     const searchParams = new URLSearchParams(paramsString);
+//     let spotId = searchParams.get('spotid');
+//     if(spotId === undefined) {
+//         spotId = 1;
+//     }
+//     return parseInt(spotId);
+// }
+
 /**
  * return the spotId for url search params
  * if no param return the default spotId 1
  * @returns {number}
  */
 export const getSpotIdFromUrl = () => {
-    const paramsString = window.location.search;
-    const searchParams = new URLSearchParams(paramsString);
-    let spotId = searchParams.get('spotid');
-    if(spotId === undefined) {
-        spotId = 1;
+    const pathArray = window.location.pathname.split('/');
+    let id;
+    if (pathArray[2] === 'detail') {
+        id = pathArray[3];
+        let idInt = parseInt(id);
+        return idInt;
     }
-    return parseInt(spotId);
+    return NaN;
 }
 
 /**

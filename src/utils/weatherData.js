@@ -1,13 +1,13 @@
 import axios from 'axios';
 import spotsFile from '../spotsFile';
-import { getDate, roundWind, isDaylight } from './utils';
+import { getDate, getSetting, setSetting, isDaylight, getCurrentTimestamp } from './utils';
 import React from "react";
 
 
 /**
  * Get spot data
  * The data is fetched from yr.no by axios
- * The data is cached in the local storage
+ * The data is cached in the sessionStorage
  *
  * @param spotId int
  * @returns {Promise<void>}
@@ -41,7 +41,12 @@ function getSpotDataFromSessionStorage (currentSpot) {
     return hourly;
 }
 
-
+/**
+ * https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=56.0&lon=12.72
+ *
+ * @param currentSpot
+ * @returns {Promise<unknown>}
+ */
 const getSpotDataFromAPI = async (currentSpot) => {
     const key = getSpotKey(currentSpot);
     let url = 'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=' + currentSpot.lat + '&lon=' + currentSpot.lon;
@@ -50,6 +55,7 @@ const getSpotDataFromAPI = async (currentSpot) => {
         .then(response => {
             sessionStorage.setItem( getSpotKey(currentSpot) + '-RAW', JSON.stringify(response));
             const refined = refineWindData(currentSpot, response);
+            setCurrentTimestamp(response);
             return refined;
         })
         .catch(err => {
@@ -59,6 +65,20 @@ const getSpotDataFromAPI = async (currentSpot) => {
     return refined;
 }
 
+function setCurrentTimestamp(response) {
+    const timestamp = response.data.properties.timeseries[0].time;
+    localStorage.setItem( 'currentTimestamp', JSON.stringify(timestamp));
+    console.log('timestamp from API, hour', timestamp, getDate(timestamp,'hour'));
+    console.log('currnet timestamp, hour ', getCurrentTimestamp(), getDate(getCurrentTimestamp(), 'hour'));
+}
+
+
+/**
+ * refines the wind data and stores it to sessionStorage
+ * @param currentSpot
+ * @param res
+ * @returns {*}
+ */
 function refineWindData(currentSpot, res) {
     const key = getSpotKey(currentSpot);
     const timeseries = res.data.properties.timeseries;
@@ -142,6 +162,11 @@ export const cacheAllSpots = (clearCache = false) => {
 }
 
 
+
+export const primeWeatherData = () => {
+    const currentTimestamp = getSetting('currentTimestamp')
+
+}
 
 
 

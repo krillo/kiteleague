@@ -16,11 +16,10 @@ class SpotHead extends React.Component {
         let weatherIcon = getWeatherIconByKey(this.props.icon);
         let spotid = "?spotid=" + this.props.id;
         let windRound = this.props.wind.toFixed(0);
-
+        const path = getPath.detail + '/' + this.props.id;
         return (
             <Link to={{
-                      pathname: getPath.detail,
-                      search: spotid,
+                      pathname: path
                   }}
                   props={this.props}>
                 <div className='spot' >
