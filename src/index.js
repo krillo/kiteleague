@@ -86,7 +86,7 @@ class App extends Component {
     render() {
         return (
         <React.StrictMode>
-            <Router>
+            <Router basename="/kiteleague">
                 <div className="container">
                     {this.getSiteHeading()}
                     <div className={'main'}>

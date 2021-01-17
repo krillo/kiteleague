@@ -9,10 +9,18 @@ export const settingsFile = [
 ];
 
 export const getPath = {
-    'home': '/kiteleague',
-    'summary': '/kiteleague/summary',
-    'settings': '/kiteleague/settings',
-    'detail': '/kiteleague/detail',
+    'home': '/',
+    'summary': '/summary',
+    'settings': '/settings',
+    'detail': '/detail',
     'img': '/kiteleague/img/icon/',
     'weatherIcon': '/kiteleague/img/weathericon/svg/',
 };
+// export const getPath = {
+//     'home': '/kiteleague',
+//     'summary': '/kiteleague/summary',
+//     'settings': '/kiteleague/settings',
+//     'detail': '/kiteleague/detail',
+//     'img': '/kiteleague/img/icon/',
+//     'weatherIcon': '/kiteleague/img/weathericon/svg/',
+// };
