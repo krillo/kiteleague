@@ -9,6 +9,7 @@ import NavFooter from './components/NavFooter/NavFooter';
 import { getIcon, primeSettings, getSetting, setSetting } from './utils/utils.js';
 import {
     BrowserRouter as Router,
+    HashRouter,
     Switch,
     Route, Link,
 } from "react-router-dom";
@@ -86,7 +87,7 @@ class App extends Component {
     render() {
         return (
         <React.StrictMode>
-            <Router basename="/kiteleague">
+            <HashRouter basename="/kiteleague">
                 <div className="container">
                     {this.getSiteHeading()}
                     <div className={'main'}>
@@ -97,20 +98,20 @@ class App extends Component {
                                     {this.getLedger()}
                                 </div>
                             </Route>
-                            <Route path={getPath.detail}>
+                            <Route exact path={getPath.detail}>
                                 <Detail spotId={"1"} />
                             </Route>
-                            <Route path={getPath.summary}>
+                            <Route exact path={getPath.summary}>
                                 <Summary  />
                             </Route>
-                            <Route path={getPath.settings}>
+                            <Route exact path={getPath.settings}>
                                 <Settings  />
                             </Route>
                         </Switch>
                     </div>
                 </div>
                 <NavFooter />
-            </Router>
+            </HashRouter>
         </React.StrictMode>
         );
     }
