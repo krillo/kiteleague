@@ -94,7 +94,6 @@ class App extends Component {
                 </div>
                 <h3 className={'align-left'}>Wind gust speed are gray and shown in parenthesis</h3>
                 <div className={'align-left text gust-text'}>(14)</div>
-
             </div>
         );
     }
@@ -111,16 +110,22 @@ class App extends Component {
                                 <div className={'main-index'}>
                                     {this.getTagLine()}
                                     {this.getLedger()}
+                                    <div className={'bottom-margin'}></div>
                                 </div>
                             </Route>
                             <Route path={getPath.detail}>
                                 <Detail spotId={"1"} />
+                                <div className={'bottom-margin'}></div>
                             </Route>
                             <Route exact path={getPath.summary}>
                                 <Summary  />
+                                <div className={'bottom-margin'}></div>
                             </Route>
                             <Route exact path={getPath.settings}>
                                 <Settings  />
+                                <div className={'bottom-margin'}></div>
+                            </Route>
+                            <Route exact path={getPath.debug}>
                                 <div className={'debug-spot-direction'}>
                                     <SpotDirection dirMin={270} dirMax={20} wind={10}  badColor={'#e5e5e5'}/>
                                     <SpotDirection dirMin={90} dirMax={45} wind={10}  badColor={'#e5e5e5'}/>
@@ -135,6 +140,7 @@ class App extends Component {
                                     <SpotDirection dirMin={300} dirMax={200} wind={10}  badColor={'#e5e5e5'}/>
                                     <SpotDirection dirMin={180} dirMax={290} wind={10}  badColor={'#e5e5e5'}/>
                                 </div>
+                                <div className={'bottom-margin'}></div>
                             </Route>
                         </Switch>
                     </div>

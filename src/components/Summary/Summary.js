@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Summary.scss';
-import { getCurrentTimestamp} from "../../utils/utils";
+import {getCurrentTimestamp, getSetting} from "../../utils/utils";
 import  spotsFile  from "../../spotsFile";
 import {
     clearNCacheAllSpots,
@@ -21,17 +21,9 @@ class Summary extends Component {
         this.state =  {
             spotData: null,
             dataReady: dataReady,
-            spotsSummary: (<div>Tjoho</div>),
+            spotsSummary: (<div>Loading..</div>),
+            showSpecialSpots: getSetting('showSpecialSpots', true),
         }
-        // if(!dataReady){
-        //     primeWeatherData().then(value => {
-        //         this.state.dataReady = value;
-        //         this.state.spotsSummary = this.spotsSummary()
-        //     })
-        // } else {
-        //     this.state.spotsSummary = this.spotsSummary()
-        // }
-
     }
 
     componentDidMount() {
@@ -44,10 +36,6 @@ class Summary extends Component {
         } else {
              this.setState({'spotsSummary':this.spotsSummary()});
         }
-        //
-        // if (!this.state.dataReady) {
-        //     this.setState({'spotsSummary':this.spotsSummary()});
-        // }
     }
 
     getSpotHead = (current) => {
@@ -71,12 +59,13 @@ class Summary extends Component {
     }
 
     spotsSummary = () => {
-        let current;
+        let current, cssClass;
         if( this.state.dataReady ) {
             const spotsSummary = spotsFile.map((spot) => {
                 current = getSpotDataFromSessionStorage(spot);
+                cssClass = current.type.join(" ");
                 return (
-                    <div key={`summary-${current.id}`} className={`summary-${current.id}`}>
+                    <div key={`spot-${current.id}`} className={`spot-${current.id} ${cssClass}`}>
                         { this.getSpotHead(current) }
                     </div>
                 );

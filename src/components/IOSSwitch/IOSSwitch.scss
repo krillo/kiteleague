@@ -5,11 +5,11 @@
 // https://www.cssscript.com/realistic-ios-switch-pure-css/
 
 .ios-switch {
-  @include app-padding;
   @include flex-row;
   justify-content: space-between;
   margin-top: 5px;
   padding-bottom: 10px;
+  width: 100%;
   .text {
     @include font-small;
   }

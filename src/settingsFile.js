@@ -4,8 +4,8 @@ import React from "react";
 
 export const settingsFile = [
     {id: 'showOnlyDaylight', text: 'Show only daylight hours', type: 'checkbox',  value: true},
+    {id: 'showSpecialSpots', text: 'Show only special spots', type: 'checkbox',  value: false},
     {id: 'showKitesurf', text: 'Show kite or SUP data', type: 'checkbox',  value: true},
-    {id: 'clearCache', text: 'Clear cache', type: 'button', value:'not cleared'},
 ];
 
 export const getPath = {
@@ -13,6 +13,7 @@ export const getPath = {
     'summary': '/summary',
     'settings': '/settings',
     'detail': '/detail',
+    'debug': '/debug',
     'img': '/kiteleague/img/icon/',
     'weatherIcon': '/kiteleague/img/weathericon/svg/',
 };

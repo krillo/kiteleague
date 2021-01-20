@@ -11,6 +11,7 @@ import {
 import { getWindDataForSpot} from "../../utils/weatherData";
 import Direction from '../Direction/Direction';
 import IOSSwitch from "../IOSSwitch/IOSSwitch";
+import SpotDirection from "../SpotDirection/SpotDirection";
 
 
 export class Detail extends Component {
@@ -160,7 +161,14 @@ export class Detail extends Component {
                 ) : (
                     <div>
                         <div className="detail-head">
-                            <div className="name">{current.name}</div>
+                            <div className={'detail-head-name'}>
+                                <div className={'detail-head-left'}>
+                                    <SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9}/>
+                                    <div className="name">{current.name}</div>
+                                </div>
+                                <div className={'detail-head-right'}>
+                                </div>
+                            </div>
                             <IOSSwitch labelText={'Show only daylight:'} name={"showOnlyDaylight"} checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
                         </div>
                         { hourly }

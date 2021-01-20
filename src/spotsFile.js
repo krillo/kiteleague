@@ -4,7 +4,7 @@
     {id: 1, name: 'Laga Oset', alias:'Lagans mynning, Halland', lat: 56.54, lon: 12.94, dirMin: 225, dirMax: 315, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 2, name: 'Sibirien', alias:'Sibirien stranden i Ängelholm', lat: 56.23, lon: 12.81, dirMin: 280, dirMax: 330, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 3, name: 'Jonstorp', alias:'Revet, Jonstorp havsbad', lat: 56.23, lon: 12.69, dirMin: 337, dirMax: 60, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
-    {id: 4, name: 'Finjagatan 6', alias:'Hemma', lat: 56.04, lon: 12.73, dirMin: 0, dirMax: 1, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
+    {id: 4, name: 'Finjagatan 6', alias:'Hemma', lat: 56.04, lon: 12.73, dirMin: 0, dirMax: 1, supMin: 225, supMax: 315, type: ['snowkite']},
     {id: 5, name: 'Råå', alias:'Hundbadet Råå hamn', lat: 56.0, lon: 12.72, dirMin: 180, dirMax: 290, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 6, name: 'Fortuna', alias:'Fortuna strand surfklubb', lat: 55.95, lon: 12.75, dirMin: 190, dirMax: 300, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 7, name: 'LA', alias:'Lundåkrahamnen i Landskrona', lat: 55.85, lon: 12.86, dirMin: 50, dirMax: 225, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},

@@ -13,8 +13,20 @@
   background-color: $gray2;
   margin-bottom: 10px;
   border-bottom: solid 1px $gray3;
-  .name {
-    @include font-big;
+  @include app-padding;
+  .detail-head-name {
+    @include flex-row;
+    padding-top:15px;
+    padding-bottom: 5px;
+    .detail-head-left{
+        @include flex-row;
+      .name {
+        @include font-big;
+
+      }
+    }
+    .detail-head-right{
+    }
   }
 }
 

@@ -38,7 +38,6 @@ export const primeWeatherData = async () => {
 export const clearNCacheAllSpots = () => {
     clearSpotCache();
     let allSpotIds = [];
-    debugger
     spotsFile.forEach(spot => {
             allSpotIds.push(spot.id);
             getWindDataForSpot(spot.id);
@@ -232,6 +231,8 @@ export const getSpotIds = () => {
 export const getWindColor = (wind) => {
     wind = parseInt(wind);
     switch (wind) {
+        case -1:
+            return '#444';
         case 0:
             return '#203763';
         case 1:

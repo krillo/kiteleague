@@ -3,34 +3,29 @@ import './Settings.scss';
 import IOSSwitch from '../IOSSwitch/IOSSwitch';
 import { settingsFile } from './../../settingsFile';
 import { clearSpotCache, clearNCacheAllSpots} from "../../utils/weatherData";
+import {getSetting, setSetting} from "../../utils/utils";
 
 class Settings extends Component {
     constructor(props) {
         super(props);
-        this.state =  {};
-        settingsFile.map( (setting) => {
-            console.log(setting.id , setting.value);
-            //this.state = {setting.id : setting.value};
-            // switch (setting.type) {
-            //     case "button":
-            //         this.state = {setting.id : setting.value};
-            //         break;
-            //     case "checkbox":
-            //         this.state[setting.id] = setting.value;
-            //         break;
-            //     default:
-            // }
-        })
-        //this.setSettingsState();
-        let i = 0;
+        this.state =  {
+            showSpecialSpots: getSetting('showSpecialSpots', true),
+        }
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
 
-     handleInputChange(event) {
+    handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        this.setState({ [name]: value });
+        this.setState({
+            [name]: value    });
+        if(name === 'showSpecialSpots') {
+            let showSpecialSpots = getSetting('showSpecialSpots');
+            showSpecialSpots.value = value;
+            setSetting('showSpecialSpots', showSpecialSpots);
+        }
     }
 
 
@@ -73,14 +68,13 @@ class Settings extends Component {
         return (
             <div className="settings">
                 <h1>Settings</h1>
-                <ul>
-                    <li className={'setting'}>
-                        { this.getSettings() }
-                    </li>
-                </ul>
-                {/*<button className={'clear-cache'} onClick={() => clearSessionStorage()}>Clear cache</button>*/}
+                {/*<ul>*/}
+                {/*    <li className={'setting'}>*/}
+                {/*        { this.getSettings() }*/}
+                {/*    </li>*/}
+                {/*</ul>*/}
+                <IOSSwitch labelText={'Show special spots:'} name={"showSpecialSpots"} checked={this.state.showSpecialSpots} onChange={this.handleInputChange} />
                 <button className={'clear-cache'} onClick={() => this.clearAndPrimeCaches()}>Clear cache</button>
-                {/*<button className={'clear-cache'} onClick={() => this.apa()}>Clear cache</button>*/}
             </div>
         )
     }
