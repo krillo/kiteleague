@@ -1,0 +1,24 @@
+@import "./../../design-tokens/scss-variables.scss";
+
+.spot-direction {
+  display: inline-block;
+  margin-right: 15px;
+  text-align: center;
+  &:hover{
+
+  }
+}
+
+.conic {
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  //box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  //border: 1px solid $gray3;
+}
+
+.dirtext {
+  margin-top:20px;
+  @include font-mini;
+}
+

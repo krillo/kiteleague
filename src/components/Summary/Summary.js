@@ -1,24 +1,53 @@
 import React, {Component} from 'react';
 import './Summary.scss';
 import { getCurrentTimestamp} from "../../utils/utils";
-import {cacheAllSpots, getCachedWindData } from "../../utils/weatherData";
+import  spotsFile  from "../../spotsFile";
+import {
+    clearNCacheAllSpots,
+    getWindDataForSpot,
+    getWindDataForAllSpots,
+    dataNeedsUpdate,
+    primeWeatherData,
+    getSpotDataFromSessionStorage,
+} from "../../utils/weatherData";
 import SpotHead from "../SpotHead/SpotHead";
+import IOSSwitch from "../IOSSwitch/IOSSwitch";
 
 class Summary extends Component {
     constructor(props) {
         super(props);
-        //const spotIds = cacheAllSpots(true);
-        const spotIds = cacheAllSpots(false);
-
+        console.log('*** constructor of Summary');
+        let dataReady = !dataNeedsUpdate();
         this.state =  {
-            spotIds: spotIds
+            spotData: null,
+            dataReady: dataReady,
+            spotsSummary: (<div>Tjoho</div>),
         }
+        // if(!dataReady){
+        //     primeWeatherData().then(value => {
+        //         this.state.dataReady = value;
+        //         this.state.spotsSummary = this.spotsSummary()
+        //     })
+        // } else {
+        //     this.state.spotsSummary = this.spotsSummary()
+        // }
+
     }
 
     componentDidMount() {
-        // const windDataPromise = getWindData(this.state.spotId);
-        // windDataPromise.then(windData => this.setState({ current: windData }));
-
+        if (!this.state.dataReady) {
+            primeWeatherData().then(value => {
+                const spotsSummary = this.spotsSummary()
+                this.state.dataReady = value;
+                this.setState({'spotsSummary':this.spotsSummary()});
+            })
+        } else {
+             this.setState({'spotsSummary':this.spotsSummary()});
+        }
+        //
+        // if (!this.state.dataReady) {
+        //     this.setState({'spotsSummary':this.spotsSummary()});
+        // }
     }
 
     getSpotHead = (current) => {
@@ -41,35 +70,37 @@ class Summary extends Component {
         />
     }
 
-
-    // const spotsSummary = Object.keys(this.state.spotIds).map((key) => {
-    // spotId = this.state.spotIds[key];
-
     spotsSummary = () => {
-        console.log(getCurrentTimestamp());
         let current;
-        const spotsSummary = this.state.spotIds.map((spotId) => {
-            current = getCachedWindData(spotId);
-            return (
-                <div key={`summary-${current.id}`} className={`summary-${current.id}`}>
-                    { this.getSpotHead(current) }
-                </div>
-            );
-        })
-        return spotsSummary;
+        if( this.state.dataReady ) {
+            const spotsSummary = spotsFile.map((spot) => {
+                current = getSpotDataFromSessionStorage(spot);
+                return (
+                    <div key={`summary-${current.id}`} className={`summary-${current.id}`}>
+                        { this.getSpotHead(current) }
+                    </div>
+                );
+            })
+            return spotsSummary;
+        }
     }
-
-
-
 
     render() {
         return (
             <div className={"summary-page"}>
-                { this.spotsSummary() }
+                {this.state.dataReady === false ? (
+                    <div>
+                        <div>Loading...</div>
+                    </div>
+                ) : (
+                    <div>
+                        { this.state.spotsSummary }
+                    </div>
+                    )
+                }
             </div>
         )
     }
 
 }
-
 export default Summary;

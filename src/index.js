@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import Detail from './components/Detail/Detail';
 import Direction from './components/Direction/Direction';
+import SpotDirection from './components/SpotDirection/SpotDirection';
 import Summary from './components/Summary/Summary';
 import Settings from './components/Settings/Settings';
 import NavFooter from './components/NavFooter/NavFooter';
-import { getIcon, primeSettings} from './utils/utils.js';
-import { cacheAllSpots } from './utils/weatherData';
+import {getIcon, getSetting, primeSettings} from './utils/utils.js';
+import { primeWeatherData } from './utils/weatherData';
 import {
     BrowserRouter as Router,
     HashRouter,
@@ -15,13 +16,20 @@ import {
     Route, Link,
 } from "react-router-dom";
 import { getPath } from "./settingsFile";
+import SpotHead from "./components/SpotHead/SpotHead";
 
 
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            dataReady: false,
+        }
+        console.log('*** constructor of App');
         primeSettings();
-        cacheAllSpots(true);
+        primeWeatherData().then(value => {
+            this.state.dataReady = value;
+        })
     }
 
     getSiteHeading = () => {
@@ -98,6 +106,18 @@ class App extends Component {
                                 <div className={'main-index'}>
                                     {this.getTagLine()}
                                     {this.getLedger()}
+                                    <SpotDirection dirMin={270} dirMax={20} />
+                                    <SpotDirection dirMin={90} dirMax={45} />
+                                    <SpotDirection dirMin={200} dirMax={300} />
+                                    <SpotDirection dirMin={0} dirMax={90} />
+                                    <SpotDirection dirMin={90} dirMax={270} />
+                                    <SpotDirection dirMin={90} dirMax={300} />
+                                    <SpotDirection dirMin={0} dirMax={360} />
+                                    <SpotDirection dirMin={0} dirMax={0} />
+                                    <SpotDirection dirMin={300} dirMax={360} />
+                                    <SpotDirection dirMin={10} dirMax={45} />
+                                    <SpotDirection dirMin={300} dirMax={200} />
+                                    <SpotDirection dirMin={180} dirMax={290} />
                                 </div>
                             </Route>
                             <Route path={getPath.detail}>

@@ -3,36 +3,82 @@ import spotsFile from '../spotsFile';
 import { getDate, getSetting, setSetting, isDaylight, getCurrentTimestamp } from './utils';
 import React from "react";
 
+/**
+ * Makes sure that latest weather data in the cache.
+ * if weather data already exists in cache then it checks if its old,
+ * in that case gets new
+ */
+export const primeWeatherData = async () => {
+    console.log('primeWeatherData -- 1');
+    if(dataNeedsUpdate()) {
+        console.log('primeWeatherData -- Needs cache update');
+        clearSpotCache();
+        for (const spot of spotsFile) {
+            const spotData = await getSpotDataFromAPI(spot);
+            console.log(spotData);
+        }
+        return true;
+    } else {
+        console.log('primeWeatherData -- cache is up to date');
+        return true;
+    }
+}
+
+
+
+
+
+
+/**
+ * clears cache and caches new data for all spots
+ * returns an array of all ids that's cached
+ *
+ * @returns {[]}
+ */
+export const clearNCacheAllSpots = () => {
+    clearSpotCache();
+    let allSpotIds = [];
+    debugger
+    spotsFile.forEach(spot => {
+            allSpotIds.push(spot.id);
+            getWindDataForSpot(spot.id);
+        }
+    );
+    return allSpotIds;
+}
 
 /**
  * Get spot data
- * The data is fetched from yr.no by axios
- * The data is cached in the sessionStorage
- *
+ * @param spotId int
+ * @returns {Promise<[]>}
+ */
+export const getWindDataForAllSpots = async () => {
+    let spotData = [];
+    spotsFile.forEach(spot => {
+            getWindDataForSpot(spot.id).then(spotData.push(spot))
+    });
+    return spotData;
+}
+
+/**
+ * Get spot data
  * @param spotId int
  * @returns {Promise<void>}
  */
-export const getWindData = async (spotId = null) => {
-    let currentSpot = getSpotBaseData(spotId);
-    let hourly = getSpotDataFromSessionStorage(currentSpot);
-    if( hourly ) {
-        return hourly;
-    }
-    return getSpotDataFromAPI (currentSpot);
-};
-
-export const getCachedWindData = (spotId = null) => {
+export const getWindDataForSpot = async (spotId = null) => {
+    let currentSpot;
     if(spotId !== null) {
-        let currentSpot = getSpotBaseData(spotId);
+        currentSpot = getSpotBaseData(spotId);
         let hourly = getSpotDataFromSessionStorage(currentSpot);
         if( hourly ) {
             return hourly;
         }
     }
-    return null;
+    return getSpotDataFromAPI (currentSpot);
 };
 
-function getSpotDataFromSessionStorage (currentSpot) {
+
+export function getSpotDataFromSessionStorage (currentSpot) {
     const key = getSpotKey(currentSpot);
     let hourly = JSON.parse(sessionStorage.getItem(key));
     if ( !hourly ) {
@@ -41,21 +87,23 @@ function getSpotDataFromSessionStorage (currentSpot) {
     return hourly;
 }
 
+
+
 /**
+ * The data is fetched from yr.no by axios
+ * The data is cached in the sessionStorage
  * https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=56.0&lon=12.72
  *
  * @param currentSpot
  * @returns {Promise<unknown>}
  */
 const getSpotDataFromAPI = async (currentSpot) => {
-    const key = getSpotKey(currentSpot);
     let url = 'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=' + currentSpot.lat + '&lon=' + currentSpot.lon;
-    let res;
     const refined = await axios.get(url)
         .then(response => {
             sessionStorage.setItem( getSpotKey(currentSpot) + '-RAW', JSON.stringify(response));
             const refined = refineWindData(currentSpot, response);
-            setCurrentTimestamp(response);
+            setLatestDataTimestamp(response);
             return refined;
         })
         .catch(err => {
@@ -65,13 +113,14 @@ const getSpotDataFromAPI = async (currentSpot) => {
     return refined;
 }
 
-function setCurrentTimestamp(response) {
-    const timestamp = response.data.properties.timeseries[0].time;
-    localStorage.setItem( 'currentTimestamp', JSON.stringify(timestamp));
-    console.log('timestamp from API, hour', timestamp, getDate(timestamp,'hour'));
-    console.log('currnet timestamp, hour ', getCurrentTimestamp(), getDate(getCurrentTimestamp(), 'hour'));
+/**
+ * set the latest data timestamp, gathered from the ajax response
+ * @param response
+ */
+function setLatestDataTimestamp(response) {
+    let latestDataTimestamp = response.data.properties.timeseries[0].time;
+    sessionStorage.setItem( 'latestDataTimestamp', JSON.stringify(latestDataTimestamp));
 }
-
 
 /**
  * refines the wind data and stores it to sessionStorage
@@ -114,6 +163,16 @@ function refineWindData(currentSpot, res) {
     return currentSpot;
 }
 
+/**
+ * return true if wind data needs to be updated
+ * @returns {boolean}
+ */
+export const dataNeedsUpdate = () => {
+    const latestDataTimestamp = JSON.parse(sessionStorage.getItem( 'latestDataTimestamp'));
+    if(latestDataTimestamp === null) return true;
+    const currentTimestamp = getCurrentTimestamp();
+    return (currentTimestamp > latestDataTimestamp);
+}
 
 
 
@@ -128,60 +187,12 @@ function getSpotKey(currentSpot) {
 
 /**
  * clears a local storage item or all if no key is submitted
- * @param key
+ * latestDataTimestamp is also stored there and also removed
  * @returns {boolean}
  */
-export const clearSessionStorage = (key = null) => {
-    if (key) {
-        sessionStorage.removeItem(key)
-    } else {
-        sessionStorage.clear();
-    }
-    return true;
+export const clearSpotCache = () => {
+    sessionStorage.clear();
 }
-
-/**
- * caches all spots
- * if clearCache is true then removes all old cached data and gets new
- * returns an array of all ids that's cached
- *
- * @param clearCache
- * @returns {[]}
- */
-export const cacheAllSpots = (clearCache = false) => {
-    if(clearCache) {
-        clearSessionStorage();
-    }
-    let allSpotIds = [];
-    spotsFile.forEach(spot => {
-            allSpotIds.push(spot.id);
-            getWindData(spot.id);
-        }
-    );
-    return allSpotIds;
-}
-
-
-
-export const primeWeatherData = () => {
-    const currentTimestamp = getSetting('currentTimestamp')
-
-}
-
-
-
-// export const cacheAllSpots = () => {
-//     const spotsSummary = spots.map((spot) => {
-//
-//         const windDataPromise = getWindData(this.state.spotId);
-//         windDataPromise.then(windData => this.setState({ current: windData }));
-//
-//         getWindData()
-//         return <div>{spot.id} {spot.name}</div>
-//     })
-//     return spotsSummary;
-// }
-
 
 /**
  * return spot base data
@@ -205,5 +216,67 @@ function getSpotBaseData(spotId = null) {
         console.log('Error: Base data missing for spot with id ' + spotId);
         return null;
     }
+}
 
+export const getSpotIds = () => {
+    const ids = spotsFile.map(spot => spot.id)
+    return ids;
+}
+
+/**
+ * returns the hex color code for the wind
+ * NOTICE variables also defines in the "_scss-variables.scss" file
+ * @param wind
+ * @returns {string}
+ */
+export const getWindColor = (wind) => {
+    wind = parseInt(wind);
+    switch (wind) {
+        case 0:
+            return '#203763';
+        case 1:
+            return '#203763';
+        case 3:
+            return '#203763';
+        case 4:
+            return '#1a6cb2';
+        case 5:
+            return '#1a6cb2';
+        case 6:
+            return '#1a6cb2';
+        case 7:
+            return '#4f9e4f';
+        case 8:
+            return '#4f9e4f';
+        case 9:
+            return '#4f9e4f';
+        case 10:
+            return '#f09100';
+        case 11:
+            return '#f09100';
+        case 12:
+            return '#f09100';
+        case 13:
+            return '#f84400';
+        case 14:
+            return '#f84400';
+        case 15:
+            return '#f84400';
+        case 16:
+            return '#9d013d';
+        case 17:
+            return '#9d013d';
+        case 18:
+            return '#9d013d';
+        case 19:
+            return '#752222';
+        case 20:
+            return '#752222';
+        case 21:
+            return '#752222';
+        case 22:
+            return '#752222';
+        default:
+            return '#000';
+    }
 }

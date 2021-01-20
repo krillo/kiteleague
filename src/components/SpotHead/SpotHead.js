@@ -3,31 +3,28 @@ import { Link } from "react-router-dom";
 import { getDate, getWeatherIconByKey} from './../../utils/utils.js';
 import { getPath } from './../../settingsFile';
 import Direction from '../Direction/Direction';
+import SpotDirection from '../SpotDirection/SpotDirection';
 import './SpotHead.scss';
 
 class SpotHead extends React.Component {
     constructor(props) {
         super(props);
-        console.log('Spot1');
-        console.log(props);
     }
 
     render() {
         let weatherIcon = getWeatherIconByKey(this.props.icon);
-        let spotid = "?spotid=" + this.props.id;
         let windRound = this.props.wind.toFixed(0);
         const path = getPath.detail + '/' + this.props.id;
         return (
-            <Link to={{
-                      pathname: path
-                  }}
+            <Link to={{ pathname: path }}
                   props={this.props}>
                 <div className='spot' >
                     <div className="spot-head">
                         <div className="left">
-                            <div className={`symbol w${windRound}`} >
-                                {windRound}
-                            </div>
+                            <SpotDirection dirMin={this.props.dirMin} dirMax={this.props.dirMax} wind={windRound}/>
+                            {/*<div className={`symbol w${windRound}`} >*/}
+                            {/*    {windRound}*/}
+                            {/*</div>*/}
                             <div className={'name'}>
                                 {this.props.name}
                             </div>

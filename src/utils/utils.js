@@ -21,7 +21,7 @@ export const roundWind = (wind) => {
  *
  * @param jsondate
  * @param type
- * @returns {string}
+ * @returns {string|boolean}
  */
 export const getDate = (jsondate, type) => {
     const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -35,7 +35,7 @@ export const getDate = (jsondate, type) => {
     let hour = pad(date.getUTCHours());
     let minutes = pad(date.getUTCMinutes());
     let time = hour + ':' + minutes;
-    let key = jsondate.substring(5, 10)  +  '-' + hour;
+    let key = jsondate.substring(5, 10) + '-' + hour;
     let isoJustDate = jsondate.substring(0, 10);
     let weekday = weekdays[date.getDay()];
     let weekdayShort = weekdaysShort[date.getDay()];
@@ -45,6 +45,7 @@ export const getDate = (jsondate, type) => {
         date.getFullYear() == today.getFullYear()) {
         isToday = true;
     }
+    let isoDateHour = jsondate.substring(0, 10) + '-' + hour;
     switch (type) {
         case 'date':
             return niceDate;
@@ -62,6 +63,8 @@ export const getDate = (jsondate, type) => {
             return isoJustDate;
         case 'is-today':
             return isToday;
+        case 'iso-date-hour':
+            return isoDateHour;
         default:
             return niceDate;
     }
@@ -83,8 +86,8 @@ function pad(val) {
 
 
 /**
- * returns current truncated timestamp i this format:
- * "2021-01-02T15:00:00Z"
+ * returns current timestamp with minutes and seconds truncated
+ * output format: "2021-01-02T15:00:00Z"
  * see also toISOString()
  * @returns {string}
  */
@@ -92,7 +95,6 @@ export const getCurrentTimestamp = () => {
     let t = new Date();
     let timestamp = JSON.stringify(t);
     timestamp = timestamp.substring(1, 14) + ':00:00Z';
-    //console.log(timestamp);
     return timestamp;
 }
 
@@ -128,21 +130,6 @@ export function isDaylight(hour) {
     }
     return false;
 }
-
-// /**
-//  * return the spotId for url search params
-//  * if no param return the default spotId 1
-//  * @returns {number}
-//  */
-// export const getSpotIdFromUrl = () => {
-//     const paramsString = window.location.search;
-//     const searchParams = new URLSearchParams(paramsString);
-//     let spotId = searchParams.get('spotid');
-//     if(spotId === undefined) {
-//         spotId = 1;
-//     }
-//     return parseInt(spotId);
-// }
 
 /**
  * return the spotId for url search params

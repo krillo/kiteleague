@@ -1,5 +1,14 @@
 @import "./../../design-tokens/scss-variables.scss";
 
+.detail-page {
+  &.showOnlyDaylight {
+    .detail-hour.nolight {
+      display:none;
+    }
+  }
+}
+
+
 .detail-head {
   background-color: $gray2;
   margin-bottom: 10px;
@@ -42,19 +51,14 @@
   background-color: white;
 }
 .hourly{
-  display:none;
+  display:flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
   border-top: 1px solid $gray3;
   @include font-small;
   @include app-padding;
-  &.daylight{
-    display:flex;
-  }
-  &.show-all{
-    display:flex;
-  }
+
   .dir svg{
     width:17px;
   }

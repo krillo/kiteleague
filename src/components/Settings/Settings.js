@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Settings.scss';
 import IOSSwitch from '../IOSSwitch/IOSSwitch';
 import { settingsFile } from './../../settingsFile';
-import { clearSessionStorage, cacheAllSpots} from "../../utils/weatherData";
+import { clearSpotCache, clearNCacheAllSpots} from "../../utils/weatherData";
 
 class Settings extends Component {
     constructor(props) {
@@ -65,8 +65,8 @@ class Settings extends Component {
     }
 
     clearAndPrimeCaches = () => {
-        clearSessionStorage();
-        cacheAllSpots();
+        clearSpotCache();
+        clearNCacheAllSpots();
     }
 
     render() {
