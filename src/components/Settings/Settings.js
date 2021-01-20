@@ -3,7 +3,7 @@ import './Settings.scss';
 import IOSSwitch from '../IOSSwitch/IOSSwitch';
 import { settingsFile } from './../../settingsFile';
 import { clearSpotCache, clearNCacheAllSpots} from "../../utils/weatherData";
-import {getSetting, setSetting} from "../../utils/utils";
+import {getSetting, setSetting, resetSettings, primeSettings} from "../../utils/utils";
 
 class Settings extends Component {
     constructor(props) {
@@ -35,6 +35,15 @@ class Settings extends Component {
         clearNCacheAllSpots();
     }
 
+    resetSettings = () => {
+        resetSettings();
+        primeSettings();
+        this.setState({ showKitesurf: getSetting('showKitesurf', true) })
+        this.setState({ showSnowkite: getSetting('showSnowkite', true) })
+        this.setState({ showSpecial: getSetting('showSpecial', true) })
+        this.setState({ showOnlyDaylight: getSetting('showOnlyDaylight', true) })
+    }
+
     render() {
         return (
             <div className="settings">
@@ -44,6 +53,7 @@ class Settings extends Component {
                 <IOSSwitch labelText={'Show snow-kite spots:'} name={"showSnowkite"} checked={this.state.showSnowkite} onChange={this.handleInputChange} />
                 <IOSSwitch labelText={'Show special spots:'} name={"showSpecial"} checked={this.state.showSpecial} onChange={this.handleInputChange} />
                 <button className={'clear-cache'} onClick={() => this.clearAndPrimeCaches()}>Clear cache</button>
+                <button className={'reset-settings'} onClick={() => this.resetSettings()}>Reset settings</button>
             </div>
         )
     }

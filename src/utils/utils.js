@@ -84,6 +84,14 @@ function pad(val) {
     }
 }
 
+/**
+ * reset setting by emptying the localStorage
+ * and then
+ * @returns {boolean}
+ */
+export const resetSettings = () => {
+    localStorage.clear();
+}
 
 /**
  * returns current timestamp with minutes and seconds truncated
