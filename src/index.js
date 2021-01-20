@@ -88,8 +88,13 @@ class App extends Component {
                 <h3 className={'wrong-text'}>Empty arrows means wrong wind direction</h3>
                 <div className={'wrong-direction'}>{wrongDir}</div>
 
+                <h3 className={'align-left'}>Show what wind directions are good for that spot</h3>
+                <div className={'align-left spot-direction-ledger'} >
+                    <SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#eee'}/>
+                </div>
                 <h3 className={'align-left'}>Wind gust speed are gray and shown in parenthesis</h3>
                 <div className={'align-left text gust-text'}>(14)</div>
+
             </div>
         );
     }
@@ -106,18 +111,6 @@ class App extends Component {
                                 <div className={'main-index'}>
                                     {this.getTagLine()}
                                     {this.getLedger()}
-                                    <SpotDirection dirMin={270} dirMax={20} />
-                                    <SpotDirection dirMin={90} dirMax={45} />
-                                    <SpotDirection dirMin={200} dirMax={300} />
-                                    <SpotDirection dirMin={0} dirMax={90} />
-                                    <SpotDirection dirMin={90} dirMax={270} />
-                                    <SpotDirection dirMin={90} dirMax={300} />
-                                    <SpotDirection dirMin={0} dirMax={360} />
-                                    <SpotDirection dirMin={0} dirMax={0} />
-                                    <SpotDirection dirMin={300} dirMax={360} />
-                                    <SpotDirection dirMin={10} dirMax={45} />
-                                    <SpotDirection dirMin={300} dirMax={200} />
-                                    <SpotDirection dirMin={180} dirMax={290} />
                                 </div>
                             </Route>
                             <Route path={getPath.detail}>
@@ -128,6 +121,20 @@ class App extends Component {
                             </Route>
                             <Route exact path={getPath.settings}>
                                 <Settings  />
+                                <div className={'debug-spot-direction'}>
+                                    <SpotDirection dirMin={270} dirMax={20} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={90} dirMax={45} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={200} dirMax={300} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={0} dirMax={90} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={90} dirMax={270} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={90} dirMax={300} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={0} dirMax={360} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={0} dirMax={0} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={300} dirMax={360} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={10} dirMax={45} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={300} dirMax={200} wind={10}  badColor={'#e5e5e5'}/>
+                                    <SpotDirection dirMin={180} dirMax={290} wind={10}  badColor={'#e5e5e5'}/>
+                                </div>
                             </Route>
                         </Switch>
                     </div>

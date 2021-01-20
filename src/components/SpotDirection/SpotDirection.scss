@@ -17,7 +17,8 @@
   //border: 1px solid $gray3;
 }
 
-.dirtext {
+.spot-direction-text {
+  display:none;
   margin-top:20px;
   @include font-mini;
 }
