@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kiteleague/static/css/main.e61ee166.chunk.css",
-    "main.js": "/kiteleague/static/js/main.d4042608.chunk.js",
-    "main.js.map": "/kiteleague/static/js/main.d4042608.chunk.js.map",
+    "main.css": "/kiteleague/static/css/main.cf19a31f.chunk.css",
+    "main.js": "/kiteleague/static/js/main.ab104b84.chunk.js",
+    "main.js.map": "/kiteleague/static/js/main.ab104b84.chunk.js.map",
     "runtime-main.js": "/kiteleague/static/js/runtime-main.dd58579a.js",
     "runtime-main.js.map": "/kiteleague/static/js/runtime-main.dd58579a.js.map",
-    "static/js/2.8392d2e0.chunk.js": "/kiteleague/static/js/2.8392d2e0.chunk.js",
-    "static/js/2.8392d2e0.chunk.js.map": "/kiteleague/static/js/2.8392d2e0.chunk.js.map",
+    "static/js/2.b7629c08.chunk.js": "/kiteleague/static/js/2.b7629c08.chunk.js",
+    "static/js/2.b7629c08.chunk.js.map": "/kiteleague/static/js/2.b7629c08.chunk.js.map",
     "index.html": "/kiteleague/index.html",
-    "static/css/main.e61ee166.chunk.css.map": "/kiteleague/static/css/main.e61ee166.chunk.css.map",
-    "static/js/2.8392d2e0.chunk.js.LICENSE.txt": "/kiteleague/static/js/2.8392d2e0.chunk.js.LICENSE.txt",
+    "static/css/main.cf19a31f.chunk.css.map": "/kiteleague/static/css/main.cf19a31f.chunk.css.map",
+    "static/js/2.b7629c08.chunk.js.LICENSE.txt": "/kiteleague/static/js/2.b7629c08.chunk.js.LICENSE.txt",
     "static/media/direction-empty.a77c4ca0.svg": "/kiteleague/static/media/direction-empty.a77c4ca0.svg",
     "static/media/direction.1eb0714b.svg": "/kiteleague/static/media/direction.1eb0714b.svg",
     "static/media/home.5bef1357.svg": "/kiteleague/static/media/home.5bef1357.svg",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.dd58579a.js",
-    "static/js/2.8392d2e0.chunk.js",
-    "static/css/main.e61ee166.chunk.css",
-    "static/js/main.d4042608.chunk.js"
+    "static/js/2.b7629c08.chunk.js",
+    "static/css/main.cf19a31f.chunk.css",
+    "static/js/main.ab104b84.chunk.js"
   ]
 }
