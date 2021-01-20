@@ -40,9 +40,9 @@ export const getDate = (jsondate, type) => {
     let weekday = weekdays[date.getDay()];
     let weekdayShort = weekdaysShort[date.getDay()];
     let isToday = false;
-    if(date.getDate() == today.getDate() &&
-        date.getMonth() == today.getMonth() &&
-        date.getFullYear() == today.getFullYear()) {
+    if(date.getDate() === today.getDate() &&
+        date.getMonth() === today.getMonth() &&
+        date.getFullYear() === today.getFullYear()) {
         isToday = true;
     }
     let isoDateHour = jsondate.substring(0, 10) + '-' + hour;

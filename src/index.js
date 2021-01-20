@@ -7,6 +7,7 @@ import SpotDirection from './components/SpotDirection/SpotDirection';
 import Summary from './components/Summary/Summary';
 import Settings from './components/Settings/Settings';
 import NavFooter from './components/NavFooter/NavFooter';
+import Debug from './components/Debug/Debug';
 import {getIcon, getSetting, primeSettings} from './utils/utils.js';
 import { primeWeatherData } from './utils/weatherData';
 import {
@@ -126,20 +127,7 @@ class App extends Component {
                                 <div className={'bottom-margin'}></div>
                             </Route>
                             <Route exact path={getPath.debug}>
-                                <div className={'debug-spot-direction'}>
-                                    <SpotDirection dirMin={270} dirMax={20} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={90} dirMax={45} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={200} dirMax={300} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={0} dirMax={90} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={90} dirMax={270} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={90} dirMax={300} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={0} dirMax={360} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={0} dirMax={0} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={300} dirMax={360} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={10} dirMax={45} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={300} dirMax={200} wind={10}  badColor={'#e5e5e5'}/>
-                                    <SpotDirection dirMin={180} dirMax={290} wind={10}  badColor={'#e5e5e5'}/>
-                                </div>
+                                <Debug />
                                 <div className={'bottom-margin'}></div>
                             </Route>
                         </Switch>

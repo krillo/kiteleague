@@ -12,6 +12,7 @@ import { getWindDataForSpot} from "../../utils/weatherData";
 import Direction from '../Direction/Direction';
 import IOSSwitch from "../IOSSwitch/IOSSwitch";
 import SpotDirection from "../SpotDirection/SpotDirection";
+import Spinner from "../Spinner/Spinner";
 
 
 export class Detail extends Component {
@@ -155,9 +156,7 @@ export class Detail extends Component {
         return (
             <div className={`detail-page ${this.state.showOnlyDaylight ? "showOnlyDaylight" : ''}`}  >
                 {this.state.current !== undefined && Object.entries(this.state.current).length === 0 ? (
-                    <div>
-                        <div>Loading...</div>
-                    </div>
+                    <Spinner />
                 ) : (
                     <div>
                         <div className="detail-head">
@@ -173,6 +172,7 @@ export class Detail extends Component {
                         </div>
                         { hourly }
                     </div>
+
                 )}
             </div>
         )}

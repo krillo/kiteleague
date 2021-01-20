@@ -12,6 +12,7 @@ import {
 } from "../../utils/weatherData";
 import SpotHead from "../SpotHead/SpotHead";
 import IOSSwitch from "../IOSSwitch/IOSSwitch";
+import Spinner from "../Spinner/Spinner";
 
 class Summary extends Component {
     constructor(props) {
@@ -89,7 +90,7 @@ class Summary extends Component {
             <div className={`summary-page ${showTypes}`}>
                 {this.state.dataReady === false ? (
                     <div>
-                        <div>Loading...</div>
+                        <Spinner />
                     </div>
                 ) : (
                     <div>
