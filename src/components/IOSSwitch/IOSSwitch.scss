@@ -4,6 +4,8 @@
 // https://codepen.io/TazTheManiac/pen/rGrpMg
 // https://www.cssscript.com/realistic-ios-switch-pure-css/
 
+
+/*** krillos code ***/
 .ios-switch {
   @include flex-row;
   justify-content: space-between;
@@ -14,8 +16,6 @@
     @include font-small;
   }
 }
-
-/*** krillos code ***/
 .form-switch {
   text-align: center;
 }
@@ -23,6 +23,7 @@
   @include font-mini;
   margin-right: 10px;
 }
+/*** krillos code ***/
 
 
 

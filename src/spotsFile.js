@@ -4,7 +4,7 @@
     {id: 1, name: 'Laga Oset', alias:'Lagans mynning, Halland', lat: 56.54, lon: 12.94, dirMin: 225, dirMax: 315, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 2, name: 'Sibirien', alias:'Sibirien stranden i Ängelholm', lat: 56.23, lon: 12.81, dirMin: 280, dirMax: 330, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 3, name: 'Jonstorp', alias:'Revet, Jonstorp havsbad', lat: 56.23, lon: 12.69, dirMin: 337, dirMax: 60, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
-    {id: 4, name: 'Finjagatan 6', alias:'Hemma', lat: 56.04, lon: 12.73, dirMin: 0, dirMax: 1, supMin: 225, supMax: 315, type: ['snowkite']},
+    {id: 4, name: 'Finjagatan 6', alias:'Hemma', lat: 56.04, lon: 12.73, dirMin: 0, dirMax: 360, supMin: 225, supMax: 315, type: ['special']},
     {id: 5, name: 'Råå', alias:'Hundbadet Råå hamn', lat: 56.0, lon: 12.72, dirMin: 180, dirMax: 290, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 6, name: 'Fortuna', alias:'Fortuna strand surfklubb', lat: 55.95, lon: 12.75, dirMin: 190, dirMax: 300, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 7, name: 'LA', alias:'Lundåkrahamnen i Landskrona', lat: 55.85, lon: 12.86, dirMin: 50, dirMax: 225, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
@@ -16,6 +16,6 @@
     {id: 13, name: 'Skanör södra', alias:'Skanörs havsbad', lat: 55.41, lon: 12.82, dirMin: 180, dirMax: 320, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 14, name: 'Idre', alias:'Idre fjäll', lat: 61.95, lon: 12.83, dirMin: 0, dirMax: 360, type: ['snowkite']},
     {id: 15, name: 'Städjan', alias:'Städjan Nipfjällets naturreservat', lat: 61.89, lon: 12.85, dirMin: 0, dirMax: 360, type: ['snowkite']},
-    {id: 16, name: 'Vantalängan', alias:'Vantalängan Brösarp, windshelter', lat: 55.72, lon: 14.06, dirMin: 0, dirMax: 360, type: ['snowkite']},
+    {id: 16, name: 'Vantalängan', alias:'Vantalängan Brösarp, windshelter', lat: 55.72, lon: 14.06, dirMin: 0, dirMax: 360, type: ['special']},
 ];
 export default spotsFile;

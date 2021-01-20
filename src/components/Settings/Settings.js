@@ -9,11 +9,13 @@ class Settings extends Component {
     constructor(props) {
         super(props);
         this.state =  {
-            showSpecialSpots: getSetting('showSpecialSpots', true),
+            showKitesurf: getSetting('showKitesurf', true),
+            showSnowkite: getSetting('showSnowkite', true),
+            showSpecial: getSetting('showSpecial', true),
+            showOnlyDaylight: getSetting('showOnlyDaylight', true),
         }
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-
 
     handleInputChange(event) {
         const target = event.target;
@@ -21,42 +23,11 @@ class Settings extends Component {
         const name = target.name;
         this.setState({
             [name]: value    });
-        if(name === 'showSpecialSpots') {
-            let showSpecialSpots = getSetting('showSpecialSpots');
-            showSpecialSpots.value = value;
-            setSetting('showSpecialSpots', showSpecialSpots);
+        if(['showSpecial', 'showKitesurf',  'showSnowkite', 'showSpecial', 'showOnlyDaylight'].includes(name)) {
+            let setting = getSetting(name);
+            setting.value = value;
+            setSetting(name, setting);
         }
-    }
-
-
-    getSettings = () => {
-        let key = '';
-        let settingHtml = settingsFile.map( setting => {
-            console.log(setting.type);
-            key = "setting-" + setting.id;
-            switch (setting.type) {
-                case "button":
-                    return <div key={setting.id} className={setting.id}></div>
-                    //return <div key={setting.id} className={setting.id}><button >{setting.text}</button></div>
-                case "checkbox":
-                    return(
-                    <div key={setting.id} className={setting.id}>
-                        <IOSSwitch
-                            text={setting.text}
-                            checked={this.state[setting.id]}
-                            name={setting.id}
-                            onChange={this.handleInputChange} />
-                    </div>)
-                default:
-                    return <div>Error</div>
-            }
-        })
-        return settingHtml;
-    }
-
-
-    apa = () => {
-        alert('button click');
     }
 
     clearAndPrimeCaches = () => {
@@ -68,12 +39,10 @@ class Settings extends Component {
         return (
             <div className="settings">
                 <h1>Settings</h1>
-                {/*<ul>*/}
-                {/*    <li className={'setting'}>*/}
-                {/*        { this.getSettings() }*/}
-                {/*    </li>*/}
-                {/*</ul>*/}
-                <IOSSwitch labelText={'Show special spots:'} name={"showSpecialSpots"} checked={this.state.showSpecialSpots} onChange={this.handleInputChange} />
+                <IOSSwitch labelText={'Show only daylight:'} name={"showOnlyDaylight"} checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
+                <IOSSwitch labelText={'Show kite surfing spots:'} name={"showKitesurf"} checked={this.state.showKitesurf} onChange={this.handleInputChange} />
+                <IOSSwitch labelText={'Show snow-kite spots:'} name={"showSnowkite"} checked={this.state.showSnowkite} onChange={this.handleInputChange} />
+                <IOSSwitch labelText={'Show special spots:'} name={"showSpecial"} checked={this.state.showSpecial} onChange={this.handleInputChange} />
                 <button className={'clear-cache'} onClick={() => this.clearAndPrimeCaches()}>Clear cache</button>
             </div>
         )

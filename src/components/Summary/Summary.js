@@ -22,7 +22,9 @@ class Summary extends Component {
             spotData: null,
             dataReady: dataReady,
             spotsSummary: (<div>Loading..</div>),
-            showSpecialSpots: getSetting('showSpecialSpots', true),
+            showKitesurf: getSetting('showKitesurf', true),
+            showSnowkite: getSetting('showSnowkite', true),
+            showSpecial: getSetting('showSpecial', true),
         }
     }
 
@@ -58,6 +60,13 @@ class Summary extends Component {
         />
     }
 
+    showTypes(){
+       let cssClass = this.state.showKitesurf ? ' kitesurf ' : '';
+       cssClass += this.state.showSnowkite ? ' snowkite ' : '';
+       cssClass += this.state.showSpecial ? ' special ' : '';
+       return cssClass;
+    }
+
     spotsSummary = () => {
         let current, cssClass;
         if( this.state.dataReady ) {
@@ -65,7 +74,7 @@ class Summary extends Component {
                 current = getSpotDataFromSessionStorage(spot);
                 cssClass = current.type.join(" ");
                 return (
-                    <div key={`spot-${current.id}`} className={`spot-${current.id} ${cssClass}`}>
+                    <div key={`spot-${current.id}`} className={`summary-spot spot-${current.id} ${cssClass}`}>
                         { this.getSpotHead(current) }
                     </div>
                 );
@@ -75,8 +84,9 @@ class Summary extends Component {
     }
 
     render() {
+        let showTypes = this.showTypes();
         return (
-            <div className={"summary-page"}>
+            <div className={`summary-page ${showTypes}`}>
                 {this.state.dataReady === false ? (
                     <div>
                         <div>Loading...</div>

@@ -224,7 +224,7 @@ export const getSpotIds = () => {
 
 /**
  * returns the hex color code for the wind
- * NOTICE variables also defines in the "_scss-variables.scss" file
+ * NOTICE variables also defined in the "_scss-variables.scss" file
  * @param wind
  * @returns {string}
  */
@@ -278,6 +278,6 @@ export const getWindColor = (wind) => {
         case 22:
             return '#752222';
         default:
-            return '#000';
+            return '#444';
     }
 }
