@@ -8,7 +8,7 @@ import Summary from './components/Summary/Summary';
 import Settings from './components/Settings/Settings';
 import NavFooter from './components/NavFooter/NavFooter';
 import Debug from './components/Debug/Debug';
-import {getIcon, getSetting, primeSettings} from './utils/utils.js';
+import {getIcon, primeSettings} from './utils/utils.js';
 import { primeWeatherData } from './utils/weatherData';
 import {
     BrowserRouter as Router,
@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import { getPath } from "./settingsFile";
 import SpotHead from "./components/SpotHead/SpotHead";
+import {ReactComponent as HomeSVG} from "./design-tokens/icons/home.svg";
 
 
 class App extends Component {
@@ -63,9 +64,10 @@ class App extends Component {
             {'text':'10-12', value: 10},
             {'text':'13-15', value: 13},
             {'text':'16-18', value: 16},
-            {'text':'19-', value: 19},
+            {'text':'19-', value: 19, debug: getPath.debug },
         ]
         let goodDir =  ledger.map((wind) => {
+            // if(wind.debug) {}
             return (
                     <div key={`wind-span + ${wind.value}`} className={'wind-span'}>
                         <div className={'dir'}><Direction dir={'220'} wind={wind.value} gust={wind.value} dirMin={0} dirMax={360}/></div>
@@ -91,7 +93,7 @@ class App extends Component {
 
                 <h3 className={'align-left'}>Show what wind directions are good for that spot</h3>
                 <div className={'align-left spot-direction-ledger'} >
-                    <SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#eee'}/>
+                    <Link to={getPath.debug}><SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#eee'}/></Link>
                 </div>
                 <h3 className={'align-left'}>Wind gust speed are gray and shown in parenthesis</h3>
                 <div className={'align-left text gust-text'}>(14)</div>
