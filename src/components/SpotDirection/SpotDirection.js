@@ -27,7 +27,8 @@ class SpotDirection extends React.Component {
      */
     getConicGradientParams = () => {
         const min = this.props.dirMin, max = this.props.dirMax;
-        const goodColor = getWindColor(this.props.wind);
+        //const goodColor = getWindColor(this.props.wind);
+        const goodColor = '#4f9e4f';
         const badColor = this.props.badColor ? this.props.badColor:'#f9f9f9';
         let goodPercent, bad1, good1, conicGradient;
 
@@ -86,6 +87,10 @@ class SpotDirection extends React.Component {
         return (
             <div className={'spot-direction'}>
                 <div className="conic" style={styles} ></div>
+                <div className="n">N</div>
+                <div className="s">S</div>
+                <div className="e">E</div>
+                <div className="w">W</div>
                 <div className={'spot-direction-text'}>dirMin:{this.props.dirMin} dirMax:{this.props.dirMax}</div>
             </div>
         );
