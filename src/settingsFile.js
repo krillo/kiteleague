@@ -15,6 +15,6 @@ export const getPath = {
     'settings': '/settings',
     'detail': '/detail',
     'debug': '/debug',
-    'img': '/kiteleague/img/icon/',
-    'weatherIcon': '/kiteleague/img/weathericon/svg/',
+    'img': '/img/icon/',
+    'weatherIcon': '/img/weathericon/svg/',
 };

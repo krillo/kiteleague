@@ -137,9 +137,13 @@
     width:100px;
     height:17px;
     border: solid 1px $gray2;
+    border-radius: 16px;
+    border-left: none;
     .wind{
       height:17px;
       @include wind-colors;
+      border-top-left-radius:8px;
+      border-bottom-left-radius:8px;
     }
     .gust {
       height:17px;

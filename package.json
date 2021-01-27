@@ -1,5 +1,5 @@
 {
-  "homepage": "https://krillo.github.io/kiteleague",
+  "homepage": "https://kiteleague.se",
   "name": "kiteleague",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +7,9 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "aws-sdk": "^2.831.0",
     "axios": "^0.21.0",
+    "deploy-aws-s3-cloudfront": "^3.3.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -18,8 +20,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "deploy-aws-s3-cloudfront install-soft-delete --bucket cfkiteleague",
+    "deploy": "deploy-aws-s3-cloudfront --react --bucket cfkiteleague",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

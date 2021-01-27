@@ -146,9 +146,10 @@ export function isDaylight(hour) {
  */
 export const getSpotIdFromUrl = () => {
     const pathArray = window.location.pathname.split('/');
+    const length = pathArray.length;
     let id;
-    if (pathArray[2] === 'detail') {
-        id = pathArray[3];
+    if (pathArray[length - 2] === 'detail') {
+        id = pathArray[length - 1];
         let idInt = parseInt(id);
         return idInt;
     }

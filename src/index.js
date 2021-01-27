@@ -104,12 +104,12 @@ class App extends Component {
     render() {
         return (
         <React.StrictMode>
-            <Router basename="/kiteleague">
+            <Router >
                 <div className="container">
-                    {this.getSiteHeading()}
                     <div className={'main'}>
                         <Switch>
                             <Route exact path={getPath.home}>
+                                {this.getSiteHeading()}
                                 <div className={'main-index'}>
                                     {this.getTagLine()}
                                     {this.getLedger()}
@@ -121,10 +121,12 @@ class App extends Component {
                                 <div className={'bottom-margin'}></div>
                             </Route>
                             <Route exact path={getPath.summary}>
+                                {this.getSiteHeading()}
                                 <Summary  />
                                 <div className={'bottom-margin'}></div>
                             </Route>
                             <Route exact path={getPath.settings}>
+                                {this.getSiteHeading()}
                                 <Settings  />
                                 <div className={'bottom-margin'}></div>
                             </Route>

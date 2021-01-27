@@ -1,0 +1,20 @@
+
+
+<Router basename="/kiteleague">
+
+
+export const getPath = {
+  'home': '/',
+  'summary': '/summary',
+  'settings': '/settings',
+  'detail': '/detail',
+  'debug': '/debug',
+  'img': '/kiteleague/img/icon/',
+  'weatherIcon': '/kiteleague/img/weathericon/svg/',
+};
+
+
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build",
+
+

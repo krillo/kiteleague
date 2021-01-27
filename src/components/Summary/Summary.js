@@ -73,7 +73,9 @@ class Summary extends Component {
         if( this.state.dataReady ) {
             const spotsSummary = spotsFile.map((spot) => {
                 current = getSpotDataFromSessionStorage(spot);
-                cssClass = current.type.join(" ");
+                if (current !== null) {
+                    cssClass = current.type.join(" ");
+                }
                 return (
                     <div key={`spot-${current.id}`} className={`summary-spot spot-${current.id} ${cssClass}`}>
                         { this.getSpotHead(current) }
