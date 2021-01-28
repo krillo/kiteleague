@@ -36,14 +36,12 @@ class SpotHead extends React.Component {
                         </div>
                     </div>
                     <div className="spot-data">
-                        <SpotDirection dirMin={this.props.dirMin} dirMax={this.props.dirMax} wind={windRound} mode={'dark'}/>
-                        <div className="dir"> <Direction dir={this.props.dir} wind={this.props.wind} gust={this.props.gust} dirMin={this.props.dirMin} dirMax={this.props.dirMax}/></div>
-                        <div className='wind-area'>
-                            <div className="wind">{this.props.wind}</div>
-                            <div className="gust">({this.props.gust})</div>
-                        </div>
                         {weatherIcon}
                         <div className="temp">{this.props.temp}°</div>
+                        <SpotDirection dirMin={this.props.dirMin} dirMax={this.props.dirMax} wind={windRound} mode={'dark'}/>
+                        <div className="dir"> <Direction dir={this.props.dir} wind={this.props.wind} gust={this.props.gust} dirMin={this.props.dirMin} dirMax={this.props.dirMax}/></div>
+                        <div className="wind">{this.props.wind}</div>
+                        <div className="gust">({this.props.gust})</div>
                     </div>
                 </div>
             </Link>
@@ -51,3 +49,9 @@ class SpotHead extends React.Component {
     }
 }
 export default SpotHead;
+
+
+// <div className='wind-area'>
+//     <div className="wind">{this.props.wind}</div>
+//     <div className="gust">({this.props.gust})</div>
+// </div>

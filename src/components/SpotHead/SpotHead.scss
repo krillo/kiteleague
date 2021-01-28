@@ -7,7 +7,7 @@
     @include flex-row;
     justify-content: space-between;
     height: 50px;
-    background-color: $gray2;
+    background-color: $gray12;
     border-top: 1px solid $gray4;
     border-bottom: 1px solid $gray3;
     @include app-padding;
@@ -43,7 +43,7 @@
       }
     }
   }
-  
+
   .spot-data {
     display: flex;
     flex-direction: row;
@@ -53,19 +53,12 @@
     height:75px;
     @include app-padding;
     @include top-bottom-padding;
-    .wind-area {
-      display: flex;
-      width: 150px;
-      justify-content: flex-start;
-      .wind{
-        @include font-big;
-        width:60px;
-      }
-      .gust{
-        color: $gray5;
-        @include font-big;
-        width:80px;
-      }
+    .wind{
+      @include font-big;
+    }
+    .gust{
+      color: $gray5;
+      @include font-big;
     }
     .icon {
       width:50px;
