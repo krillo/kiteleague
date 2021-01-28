@@ -29,7 +29,13 @@ class SpotDirection extends React.Component {
         const min = this.props.dirMin, max = this.props.dirMax;
         //const goodColor = getWindColor(this.props.wind);
         const goodColor = '#4f9e4f';
-        const badColor = this.props.badColor ? this.props.badColor:'#f9f9f9';
+        //let badColor = this.props.badColor ? this.props.badColor:'#f9f9f9';
+        //let badColor = this.props.badColor ? this.props.badColor:'#e5e5e5';
+        let badColor = '#fff';
+        if(this.props.mode === 'dark') {
+            badColor = '#e5e5e5';
+        }
+        const dark = '';
         let goodPercent, bad1, good1, conicGradient;
 
         if(min > max) {

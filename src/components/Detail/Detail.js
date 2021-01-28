@@ -162,10 +162,11 @@ export class Detail extends Component {
                         <div className="detail-head">
                             <div className={'detail-head-name'}>
                                 <div className={'detail-head-left'}>
-                                    <SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9}/>
+                                    {/*<SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9}/>*/}
                                     <div className="name">{current.name}</div>
                                 </div>
                                 <div className={'detail-head-right'}>
+                                    <SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9} mode={'light'}/>
                                 </div>
                             </div>
                             <IOSSwitch labelText={'Show only daylight:'} name={"showOnlyDaylight"} checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />

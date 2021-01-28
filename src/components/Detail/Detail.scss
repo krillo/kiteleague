@@ -16,6 +16,7 @@
   @include app-padding;
   .detail-head-name {
     @include flex-row;
+    justify-content: space-between;
     padding-top:15px;
     padding-bottom: 5px;
     .detail-head-left{

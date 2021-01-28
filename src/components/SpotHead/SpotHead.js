@@ -21,7 +21,7 @@ class SpotHead extends React.Component {
                 <div className='spot' >
                     <div className="spot-head">
                         <div className="left">
-                            <SpotDirection dirMin={this.props.dirMin} dirMax={this.props.dirMax} wind={windRound}/>
+                            {/*<SpotDirection dirMin={this.props.dirMin} dirMax={this.props.dirMax} wind={windRound}/>*/}
                             {/*<div className={`symbol w${windRound}`} >*/}
                             {/*    {windRound}*/}
                             {/*</div>*/}
@@ -36,6 +36,7 @@ class SpotHead extends React.Component {
                         </div>
                     </div>
                     <div className="spot-data">
+                        <SpotDirection dirMin={this.props.dirMin} dirMax={this.props.dirMax} wind={windRound} mode={'dark'}/>
                         <div className="dir"> <Direction dir={this.props.dir} wind={this.props.wind} gust={this.props.gust} dirMin={this.props.dirMin} dirMax={this.props.dirMax}/></div>
                         <div className='wind-area'>
                             <div className="wind">{this.props.wind}</div>

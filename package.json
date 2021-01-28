@@ -20,7 +20,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "predeploy": "deploy-aws-s3-cloudfront install-soft-delete --bucket cfkiteleague",
+    "predeploy": "npm run build && deploy-aws-s3-cloudfront install-soft-delete --bucket cfkiteleague",
     "deploy": "deploy-aws-s3-cloudfront --react --bucket cfkiteleague",
     "start": "react-scripts start",
     "build": "react-scripts build",

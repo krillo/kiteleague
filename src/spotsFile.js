@@ -1,6 +1,6 @@
 
  const spotsFile = [
-    {id: 0, name: 'Doggen', alias:'Dogshit bay, Halmstad småbåtshamn', lat: 56.66, lon: 12.847, dirMin: 180, dirMax: 240, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
+    {id: 0, name: 'Doggen', alias:'Dogshit bay, Halmstad småbåtshamn', lat: 56.66, lon: 12.847, dirMin: 180, dirMax: 240, supMin: 225, supMax: 315, type: ['doggen', 'sup']},
     {id: 1, name: 'Laga Oset', alias:'Lagans mynning, Halland', lat: 56.54, lon: 12.94, dirMin: 225, dirMax: 315, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 2, name: 'Sibirien', alias:'Sibirien stranden i Ängelholm', lat: 56.23, lon: 12.81, dirMin: 280, dirMax: 330, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 3, name: 'Jonstorp', alias:'Revet, Jonstorp havsbad', lat: 56.23, lon: 12.69, dirMin: 337, dirMax: 60, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
