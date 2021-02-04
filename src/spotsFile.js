@@ -16,7 +16,9 @@
     {id: 13, name: 'Skanör södra', alias:'Skanörs havsbad', lat: 55.41, lon: 12.82, dirMin: 180, dirMax: 320, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 14, name: 'Idre', alias:'Idre fjäll', lat: 61.95, lon: 12.83, dirMin: 0, dirMax: 360, type: ['snowkite']},
     {id: 15, name: 'Städjan', alias:'Städjan Nipfjällets naturreservat', lat: 61.89, lon: 12.85, dirMin: 0, dirMax: 360, type: ['snowkite']},
-    {id: 16, name: 'Vantalängan', alias:'Vantalängan Brösarp, windshelter', lat: 55.72, lon: 14.06, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 16, name: 'Vantalängan', alias:'Vantalängan Brösarp, windshelter', lat: 55.72, lon: 14.06, dirMin: 0, dirMax: 360, type: ['slask']},
     {id: 17, name: 'Nieuwe Binnenweg', alias:'Rotterdam Nieuwe Binnenweg', lat: 51.915, lon: 4.466, dirMin: 0, dirMax: 360, type: ['special']},
-];
+    {id: 18, name: 'Klåveröd', alias:'Klåverödsdammen strövområde', lat: 56.033947, lon: 13.180781, dirMin: 0, dirMax: 360, type: ['slask']},
+    {id: 19, name: 'Rössjön', alias:'Rössjön', lat: 56.31815046910982, lon: 13.079239683733386, dirMin: 0, dirMax: 360, type: ['special']},
+ ];
 export default spotsFile;

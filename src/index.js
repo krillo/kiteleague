@@ -37,9 +37,10 @@ class App extends Component {
     getSiteHeading = () => {
         return (
         <Link to="/" className={'home'}>
-            <h1 className={'site-heading'}>
-                Kite league {getIcon('kitesurfing', 'png', 'kitesurfing')}
-            </h1>
+            <div className={'site-heading'}>
+                {getIcon('kitesurfing', 'png', 'kitesurfing')}
+                <h1>Kite league</h1>
+            </div>
         </Link>
         );
     }
@@ -93,7 +94,7 @@ class App extends Component {
 
                 <h3 className={'align-left'}>Show what wind directions are good for that spot</h3>
                 <div className={'align-left spot-direction-ledger'} >
-                    <Link to={getPath.debug}><SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#eee'}/></Link>
+                    <Link to={getPath.debug}><SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#eee'} mode={'dark'}/></Link>
                 </div>
                 <h3 className={'align-left'}>Wind gust speed are gray and shown in parenthesis</h3>
                 <div className={'align-left text gust-text'}>(14)</div>
@@ -111,7 +112,6 @@ class App extends Component {
                             <Route exact path={getPath.home}>
                                 {this.getSiteHeading()}
                                 <div className={'main-index'}>
-                                    {this.getTagLine()}
                                     {this.getLedger()}
                                     <div className={'bottom-margin'}></div>
                                 </div>
