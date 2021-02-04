@@ -40,6 +40,7 @@ class App extends Component {
             <div className={'site-heading'}>
                 {getIcon('kitesurfing', 'png', 'kitesurfing')}
                 <h1>Kite league</h1>
+                <SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#eee'} mode={'dark'}/>
             </div>
         </Link>
         );
