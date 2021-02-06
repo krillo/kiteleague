@@ -131,8 +131,8 @@ export const getIcon = (imgKey, type = 'svg', cssClasses = '') => {
  * @returns {boolean}
  */
 export function isDaylight(hour) {
-    const sunup = '09';
-    const sundown = '15';
+    const sunup = '08';
+    const sundown = '16';
     if(sunup <= hour && hour <= sundown){
         return true;
     }

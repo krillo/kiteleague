@@ -20,5 +20,6 @@
     {id: 17, name: 'Nieuwe Binnenweg', alias:'Rotterdam Nieuwe Binnenweg', lat: 51.915, lon: 4.466, dirMin: 0, dirMax: 360, type: ['special']},
     {id: 18, name: 'Klåveröd', alias:'Klåverödsdammen strövområde', lat: 56.033947, lon: 13.180781, dirMin: 0, dirMax: 360, type: ['slask']},
     {id: 19, name: 'Rössjön', alias:'Rössjön', lat: 56.31815046910982, lon: 13.079239683733386, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 20, name: 'Hyllingesjön', alias:'Rössjön', lat: 56.09972694701641, lon: 12.827305703751486, dirMin: 0, dirMax: 360, type: ['snowkite', 'special']},
  ];
 export default spotsFile;
