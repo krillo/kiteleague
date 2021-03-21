@@ -21,5 +21,9 @@
     {id: 18, name: 'Klåveröd', alias:'Klåverödsdammen strövområde', lat: 56.033947, lon: 13.180781, dirMin: 0, dirMax: 360, type: ['slask']},
     {id: 19, name: 'Rössjön', alias:'Rössjön', lat: 56.31815046910982, lon: 13.079239683733386, dirMin: 0, dirMax: 360, type: ['special']},
     {id: 20, name: 'Hyllingesjön', alias:'Rössjön', lat: 56.09972694701641, lon: 12.827305703751486, dirMin: 0, dirMax: 360, type: ['snowkite', 'special']},
+    {id: 21, name: 'Hålebäck', alias:'Hålebäck vindskydd', lat: 56.112292, lon:13.031894, dirMin: 0, dirMax: 360, type: ['snowkite', 'special']},
+    {id: 22, name: 'Björnrike, Timmerkojan', alias:'Vemdalen Björnrike, Timmerkojan', lat:62.433494, lon:14.014375,dirMin: 0, dirMax: 360, type: ['snowkite', 'special']},
+    {id: 23, name: 'Storhogna', alias:'Vemdalen Storhogna', lat:62.518780, lon:14.095985, dirMin: 230, dirMax: 120, type: ['snowkite', 'special']},
+    {id: 24, name: 'Farhult', alias:'Farhult', lat:56.225180, lon:12.713968, dirMin: 260, dirMax: 80, type: ['kitesurf', 'sup']},
  ];
 export default spotsFile;
