@@ -1,4 +1,5 @@
-import {getPath, settingsFile} from "../settingsFile";
+import { getPath, settingsFile } from "../settingsFile";
+import dateFormat  from 'dateformat';
 
 /**
  * Round wind to to 0 decimals
@@ -14,7 +15,7 @@ export const roundWind = (wind) => {
  * date - '16 dec'
  * time - '22:00'
  * hour - '22'
- * key - '12-16-08'
+ * key - '12-16-08'  month-day-hour
  * weekday - 'Wednesday'
  * weekday-short - 'Wed'
  * is-today - boolean
@@ -28,15 +29,16 @@ export const getDate = (jsondate, type) => {
     const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const weekdaysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const date = new Date(jsondate);
+    const dateIsoStyle = dateFormat(date, 'isoDateTime');
     const today = new Date();
     let monthName = months[date.getMonth()];
     let day = date.getDate();
     let niceDate = day + ' ' + monthName;
-    let hour = pad(date.getUTCHours());
-    let minutes = pad(date.getUTCMinutes());
+    let hour = pad(date.getHours());
+    let minutes = pad(date.getMinutes());
     let time = hour + ':' + minutes;
-    let key = jsondate.substring(5, 10) + '-' + hour;
-    let isoJustDate = jsondate.substring(0, 10);
+    let key = dateIsoStyle.substring(5, 10) + '-' + hour;
+    let isoJustDate = dateIsoStyle.substring(0, 10);
     let weekday = weekdays[date.getDay()];
     let weekdayShort = weekdaysShort[date.getDay()];
     let isToday = false;
@@ -131,8 +133,8 @@ export const getIcon = (imgKey, type = 'svg', cssClasses = '') => {
  * @returns {boolean}
  */
 export function isDaylight(hour) {
-    const sunup = '08';
-    const sundown = '16';
+    const sunup = '06';
+    const sundown = '20';
     if(sunup <= hour && hour <= sundown){
         return true;
     }

@@ -75,12 +75,15 @@ class Summary extends Component {
                 current = getSpotDataFromSessionStorage(spot);
                 if (current !== null) {
                     cssClass = current.type.join(" ");
+                    return (
+                        <div key={`spot-${current.id}`} className={`summary-spot spot-${current.id} ${cssClass}`}>
+                            { this.getSpotHead(current) }
+                        </div>
+                    );
+                } else {
+                    return ''
                 }
-                return (
-                    <div key={`spot-${current.id}`} className={`summary-spot spot-${current.id} ${cssClass}`}>
-                        { this.getSpotHead(current) }
-                    </div>
-                );
+
             })
             return spotsSummary;
         }

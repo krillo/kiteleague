@@ -92,6 +92,7 @@ export class Detail extends Component {
     }
 
     getHourly = (current) => {
+        console.log(current)
         let elementKey, newDay, hour, isoJustDate;
         let iterateDate = {currentDate: null};
         let daylightClass = '';
@@ -103,6 +104,7 @@ export class Detail extends Component {
             daylightClass = (hour.isDaylight === true) ? 'daylight' : 'nolight';
             isoJustDate = getDate(hour.timestamp, 'iso-just-date');
             newDay = '';
+            // debugger
             if(this.isNewDay(hour, iterateDate) || today === true) {
                 today = false;
                 newDay = (
