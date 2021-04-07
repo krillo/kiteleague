@@ -104,7 +104,6 @@ export class Detail extends Component {
             daylightClass = (hour.isDaylight === true) ? 'daylight' : 'nolight';
             isoJustDate = getDate(hour.timestamp, 'iso-just-date');
             newDay = '';
-            // debugger
             if(this.isNewDay(hour, iterateDate) || today === true) {
                 today = false;
                 newDay = (
