@@ -5,16 +5,16 @@
 }
 
 .container {
-  width:100%;
   @include app-width;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   margin-bottom: $nav-height;
   height: 100%;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  position: absolute;
+  top:0;
 }
 
 .bottom-margin {

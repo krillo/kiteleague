@@ -112,35 +112,37 @@ export class Detail extends Component {
                             <div className={'weekday'}>{getDate(hour.timestamp, 'weekday')}</div>
                             <div className={'nice-date'}>{getDate(hour.timestamp, 'date')}</div>
                         </div>
-                        <div className={`no-more-daylight ${this.noMoreDaylightText(hour.timestamp)}`}>
-                            No more daylight today...
-                        </div>
+                        {/*<div className={`no-more-daylight ${this.noMoreDaylightText(hour.timestamp)}`}>*/}
+                        {/*    No more daylight today...*/}
+                        {/*</div>*/}
                     </div>
 
                 );
             }
             x.push (
-                <div key={elementKey} className={elementKey}>
+                <>
                     {newDay}
-                    <div className={`detail-hour ${isoJustDate} ${daylightClass}`}>
-                        <div className={`hourly ${isoJustDate} `}>
-                            <div className={'part part-weather'}>
-                                <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
-                                {getWeatherIconByKey(hour.icon)}
-                                <div className="temp">{hour.temp}°</div>
-                            </div>
-                            <div className={'part part-wind'}>
-                                <div className="dir">
-                                    <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} />
+                    <div key={elementKey} className={elementKey}>
+                        <div className={`detail-hour ${isoJustDate} ${daylightClass}`}>
+                            <div className={`hourly ${isoJustDate} `}>
+                                <div className={'part part-weather'}>
+                                    <div className="hour">{getDate(hour.timestamp, 'hour')}</div>
+                                    {getWeatherIconByKey(hour.icon)}
+                                    <div className="temp">{hour.temp}°</div>
                                 </div>
-                                <div className="wind">{hour.wind} </div>
-                                <div className={`gust g${hour.gust} `} >({hour.gust})</div>
-                                <div className="unit">m/s</div>
+                                <div className={'part part-wind'}>
+                                    <div className="dir">
+                                        <Direction dir={hour.dir} wind={hour.wind} gust={hour.gust} dirMin={this.state.current.dirMin} dirMax={this.state.current.dirMax} />
+                                    </div>
+                                    <div className="wind">{hour.wind} </div>
+                                    <div className={`gust g${hour.gust} `} >({hour.gust})</div>
+                                    <div className="unit">m/s</div>
+                                </div>
+                                {this.getWindBar(hour)}
                             </div>
-                            {this.getWindBar(hour)}
                         </div>
                     </div>
-                </div>
+                </>
             )
         })
         return x;
@@ -160,21 +162,17 @@ export class Detail extends Component {
                     <Spinner />
                 ) : (
                     <div>
-                        <div className="detail-head">
-                            <div className={'detail-head-name'}>
-                                <div className={'detail-head-left'}>
-                                    {/*<SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9}/>*/}
-                                    <div className="name">{current.name}</div>
-                                </div>
-                                <div className={'detail-head-right'}>
-                                    <SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9} mode={'light'}/>
-                                </div>
-                            </div>
+                        <div className='detail-head-top'>
                             <IOSSwitch labelText={'Show only daylight:'} name={"showOnlyDaylight"} checked={this.state.showOnlyDaylight} onChange={this.handleInputChange} />
+                        </div>
+                        <div className="detail-head">
+                            <div className={'bottom'}>
+                                <div className="name">{current.name}</div>
+                                <SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9} mode={'light'}/>
+                            </div>
                         </div>
                         { hourly }
                     </div>
-
                 )}
             </div>
         )}

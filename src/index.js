@@ -19,6 +19,7 @@ import {
 import { getPath } from "./settingsFile";
 import SpotHead from "./components/SpotHead/SpotHead";
 import {ReactComponent as HomeSVG} from "./design-tokens/icons/home.svg";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 
 class App extends Component {
@@ -107,38 +108,40 @@ class App extends Component {
         return (
         <React.StrictMode>
             <Router >
-                <div className="container">
-                    <div className={'main'}>
-                        <Switch>
-                            <Route exact path={getPath.home}>
-                                {this.getSiteHeading()}
-                                <div className={'main-index'}>
-                                    {this.getLedger()}
+                <ScrollToTop>
+                    <div className="container">
+                        <div className={'main'}>
+                            <Switch>
+                                <Route exact path={getPath.home}>
+                                    {this.getSiteHeading()}
+                                    <div className={'main-index'}>
+                                        {this.getLedger()}
+                                        <div className={'bottom-margin'}></div>
+                                    </div>
+                                </Route>
+                                <Route path={getPath.detail}>
+                                    <Detail spotId={"1"} />
                                     <div className={'bottom-margin'}></div>
-                                </div>
-                            </Route>
-                            <Route path={getPath.detail}>
-                                <Detail spotId={"1"} />
-                                <div className={'bottom-margin'}></div>
-                            </Route>
-                            <Route exact path={getPath.summary}>
-                                {this.getSiteHeading()}
-                                <Summary  />
-                                <div className={'bottom-margin'}></div>
-                            </Route>
-                            <Route exact path={getPath.settings}>
-                                {this.getSiteHeading()}
-                                <Settings  />
-                                <div className={'bottom-margin'}></div>
-                            </Route>
-                            <Route exact path={getPath.debug}>
-                                <Debug />
-                                <div className={'bottom-margin'}></div>
-                            </Route>
-                        </Switch>
+                                </Route>
+                                <Route exact path={getPath.summary}>
+                                    {this.getSiteHeading()}
+                                    <Summary  />
+                                    <div className={'bottom-margin'}></div>
+                                </Route>
+                                <Route exact path={getPath.settings}>
+                                    {this.getSiteHeading()}
+                                    <Settings  />
+                                    <div className={'bottom-margin'}></div>
+                                </Route>
+                                <Route exact path={getPath.debug}>
+                                    <Debug />
+                                    <div className={'bottom-margin'}></div>
+                                </Route>
+                            </Switch>
+                        </div>
                     </div>
-                </div>
                 <NavFooter />
+                </ScrollToTop>
             </Router>
         </React.StrictMode>
         );
