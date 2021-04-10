@@ -4,6 +4,8 @@ import Spinner from '../Spinner/Spinner';
 import SpotDirection from "../SpotDirection/SpotDirection";
 import {Route} from "react-router-dom";
 import {Button} from '@material-ui/core';
+import AlarmRoutinesPanel from "../../../../what/src/panels/CRAlarmPanel/AlarmRoutinesPanel";
+import MoreInfo from "../MoreInfo/MoreInfo";
 
 
 // interface IProps {
@@ -14,7 +16,7 @@ import {Button} from '@material-ui/core';
 const Debug = () => {
 
     const Butt = () => {
-        return <Button color="primary">Hello World</Button>
+        return <Button variant="contained" color="primary">Material button</Button>
     }
 
     return (
@@ -35,6 +37,7 @@ const Debug = () => {
                 <SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#e5e5e5'}/>
             </div>
             <Butt/>
+            <MoreInfo handleClick={alarmRoutinesClick} />
         </>
 
 
