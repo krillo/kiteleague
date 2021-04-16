@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Debug.scss';
 import Spinner from '../Spinner/Spinner';
 import SpotDirection from "../SpotDirection/SpotDirection";
-import {Route} from "react-router-dom";
 import {Button} from '@material-ui/core';
-import AlarmRoutinesPanel from "../../../../what/src/panels/CRAlarmPanel/AlarmRoutinesPanel";
-import MoreInfo from "../MoreInfo/MoreInfo";
+import SpotInfo from "../SpotInfo/SpotInfo";
+import Expandable from "../Expandable/Expandable";
 
 
 // interface IProps {
@@ -37,7 +36,7 @@ const Debug = () => {
                 <SpotDirection dirMin={180} dirMax={290} wind={10} badColor={'#e5e5e5'}/>
             </div>
             <Butt/>
-            <MoreInfo handleClick={alarmRoutinesClick} />
+            <Expandable  />
         </>
 
 

@@ -13,6 +13,8 @@ import Direction from '../Direction/Direction';
 import IOSSwitch from "../IOSSwitch/IOSSwitch";
 import SpotDirection from "../SpotDirection/SpotDirection";
 import Spinner from "../Spinner/Spinner";
+import Expandable from "../Expandable/Expandable";
+import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 
 
 export class Detail extends Component {
@@ -24,8 +26,10 @@ export class Detail extends Component {
             current: {},
             iterateDate: null,
             showOnlyDaylight: getSetting('showOnlyDaylight', true),
+            moreInfoClass: '',
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleOnClick = this.handleOnClick.bind(this);
     }
 
     componentDidMount() {
@@ -38,12 +42,19 @@ export class Detail extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        this.setState({
-            [name]: value    });
+        this.setState({[name]: value    });
         if(name === 'showOnlyDaylight') {
             let showOnlyDaylight = getSetting('showOnlyDaylight');
             showOnlyDaylight.value = value;
             setSetting('showOnlyDaylight', showOnlyDaylight);
+        }
+    }
+
+    handleOnClick() {
+        if(this.state.moreInfoClass === '') {
+            this.setState({moreInfoClass: 'active'});
+        } else {
+            this.setState({moreInfoClass: ''});
         }
     }
 
@@ -148,13 +159,15 @@ export class Detail extends Component {
         return x;
     }
 
-
     render() {
         let current, spotHead, hourly;
         if(this.state.current !== undefined && Object.entries(this.state.current).length !== 0){
             current = this.state.current;
             hourly = this.getHourly(current);
         }
+
+        const lon = '24.197611'
+        const lat = '120.780512'
 
         return (
             <div className={`detail-page ${this.state.showOnlyDaylight ? "showOnlyDaylight" : ''}`}  >
@@ -167,8 +180,11 @@ export class Detail extends Component {
                         </div>
                         <div className="detail-head">
                             <div className={'bottom'}>
-                                <div className="name">{current.name}</div>
+                                <div className={`name-expand ${this.state.moreInfoClass}`} onClick={this.handleOnClick} >{current.name} <ExpandMoreRoundedIcon className='expand-more'/></div>
                                 <SpotDirection dirMin={current.dirMin} dirMax={current.dirMax} wind={9} mode={'light'}/>
+                            </div>
+                            <div className={`expanded ${this.state.moreInfoClass}`} >
+                                    <a href={`https://maps.google.com/maps/search/?api=1&basemap=satellite&query=${current.lat},${current.lon}&zoom=8`} >Find spot on google maps</a>
                             </div>
                         </div>
                         { hourly }

@@ -1,0 +1,36 @@
+.expandable {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 2.5em;
+  &:hover {
+    background-color: #ccc;
+  }
+  .expand-more {
+    font-size: 2.5em;
+    transform: rotate(0);
+    transition: 0.2s ease-out;
+  }
+  &.active {
+    .expand-more {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: #61dafb;
+  &.active {
+    max-height: 200px;
+  }
+}
