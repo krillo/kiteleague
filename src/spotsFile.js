@@ -29,6 +29,10 @@
     {id: 2003, name: 'Hålebäck', alias:'Hålebäck vindskydd', lat: 56.112292, lon:13.031894, dirMin: 0, dirMax: 360, type: ['snowkite', 'special']},
     {id: 2004, name: 'Vantalängan', alias:'Vantalängan Brösarp, windshelter', lat: 55.72, lon: 14.06, dirMin: 0, dirMax: 360, type: ['slask']},
     {id: 2005, name: 'Nieuwe Binnenweg', alias:'Rotterdam Nieuwe Binnenweg', lat: 51.915, lon: 4.466, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 2006, name: 'Lärkesholssjön', alias:'', lat: 56.285285, lon:13.378515, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 2006, name: 'Lörje', alias:'Lörje gård Gotland', lat: 57.741272, lon:18.945619, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 2006, name: 'Smöjen', alias:'Smöjen Gotland', lat: 57.725641, lon:18.951206, dirMin: 0, dirMax: 360, type: ['special']},
+
 
  ];
 export default spotsFile;
