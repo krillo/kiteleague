@@ -19,7 +19,7 @@
     {id: 85, name: 'Falsterbo', alias:'Falsterbo strandbad', lat: 55.390493, lon: 12.848928, dirMin: 110, dirMax: 230, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 90, name: 'Skanör södra', alias:'Skanörs havsbad', lat: 55.414378, lon: 12.828246, dirMin: 180, dirMax: 320, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
 
-
+    // Kite Gotland
     {id: 200, name: 'Gnisvärd', alias:'Gnisvärd, Tofta,  Gotland', lat: 57.501328, lon:18.113843, dirMin: 180, dirMax: 300, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 210, name: 'Kovik', alias:'Kovik Sanda, Klintehamn,  Gotland', lat: 57.406496, lon: 18.156294, dirMin: 180, dirMax: 315, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
     {id: 212, name: 'Tjuris', alias:'Tjurudden kite beach, Klintehamn,  Gotland', lat: 57.397218, lon: 18.172125, dirMin: 180, dirMax: 315, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
@@ -28,7 +28,7 @@
     {id: 233, name: 'Valleviken', alias:'Sjökrogen Valleviken, Gotland', lat: 57.787030, lon:18.949839, dirMin: 140, dirMax: 180, supMin: 225, supMax: 315, type: ['kitesurf', 'sup']},
 
 
-
+    // snowkite
     {id: 1000, name: 'Idre', alias:'Idre fjäll', lat: 61.95, lon: 12.83, dirMin: 0, dirMax: 360, type: ['snowkite']},
     {id: 1001, name: 'Städjan', alias:'Städjan Nipfjällets naturreservat', lat: 61.89, lon: 12.85, dirMin: 0, dirMax: 360, type: ['snowkite']},
     {id: 1010, name: 'Storhogna', alias:'Vemdalen Storhogna', lat:62.518780, lon:14.095985, dirMin: 230, dirMax: 120, type: ['snowkite']},
@@ -41,9 +41,9 @@
     {id: 2003, name: 'Hålebäck', alias:'Hålebäck vindskydd', lat: 56.112292, lon:13.031894, dirMin: 0, dirMax: 360, type: ['slask']},
     {id: 2004, name: 'Vantalängan', alias:'Vantalängan Brösarp, windshelter', lat: 55.72, lon: 14.06, dirMin: 0, dirMax: 360, type: ['slask']},
     {id: 2005, name: 'Nieuwe Binnenweg', alias:'Rotterdam Nieuwe Binnenweg', lat: 51.915, lon: 4.466, dirMin: 0, dirMax: 360, type: ['special']},
-    {id: 2006, name: 'Lärkesholssjön', alias:'', lat: 56.285285, lon:13.378515, dirMin: 0, dirMax: 360, type: ['special']},
-    {id: 2006, name: 'Lörje', alias:'Lörje gård Gotland', lat: 57.741272, lon:18.945619, dirMin: 0, dirMax: 360, type: ['special']},
-    {id: 2006, name: 'Smöjen', alias:'Smöjen Gotland', lat: 57.725641, lon:18.951206, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 2006, name: 'Lärkesholmssjön', alias:'', lat: 56.285285, lon:13.378515, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 2007, name: 'Lörje', alias:'Lörje gård Gotland', lat: 57.741272, lon:18.945619, dirMin: 0, dirMax: 360, type: ['special']},
+    {id: 2008, name: 'Smöjen', alias:'Smöjen Gotland', lat: 57.725641, lon:18.951206, dirMin: 0, dirMax: 360, type: ['special']},
 
  ];
 export default spotsFile;
