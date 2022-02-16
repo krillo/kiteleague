@@ -340,6 +340,16 @@ const spotsFile = [
     type: ["snowkite"],
   },
   {
+    id: 1031,
+    name: "Tandådalen",
+    alias: "Tandådalen",
+    lat: 61.17354992161195,
+    lon: 13.019679441035745,
+    dirMin: 0,
+    dirMax: 360,
+    type: ["snowkite"],
+  },
+  {
     id: 1040,
     name: "Hyllingesjön",
     alias: "Rössjön",
