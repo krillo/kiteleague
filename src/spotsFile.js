@@ -252,6 +252,18 @@ const spotsFile = [
     type: ["kitesurf", "sup"],
   },
   {
+    id: 215,
+    name: "Ardre",
+    alias: "Ardre,  Gotland",
+    lat: 57.36309711862642,
+    lon: 18.754762377041484,
+    dirMin: 20,
+    dirMax: 90,
+    supMin: 225,
+    supMax: 315,
+    type: ["kitesurf", "sup"],
+  },
+  {
     id: 220,
     name: "Åminne",
     alias: "Åminne,  Gotland",
